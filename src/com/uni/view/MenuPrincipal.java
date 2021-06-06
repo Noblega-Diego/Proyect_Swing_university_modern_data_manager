@@ -1,6 +1,8 @@
 
 package com.uni.view;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author diego
@@ -24,59 +26,59 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        panel_superior = new javax.swing.JPanel();
+        panel_principal = new javax.swing.JPanel();
+        bt_carrera = new javax.swing.JButton();
+        bt_profesores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(244, 244, 244));
+        panel_superior.setBackground(new java.awt.Color(244, 244, 244));
 
-        jPanel2.setBackground(new java.awt.Color(103, 243, 193));
-        jPanel2.setPreferredSize(new java.awt.Dimension(1172, 56));
+        panel_principal.setBackground(new java.awt.Color(103, 243, 193));
+        panel_principal.setPreferredSize(new java.awt.Dimension(1172, 56));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Carrera_default.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setFocusPainted(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Carrera_select.png"))); // NOI18N
+        bt_carrera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Carrera_default.png"))); // NOI18N
+        bt_carrera.setBorderPainted(false);
+        bt_carrera.setContentAreaFilled(false);
+        bt_carrera.setFocusPainted(false);
+        bt_carrera.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_carrera.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Carrera_select.png"))); // NOI18N
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Profesor_default.png"))); // NOI18N
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setFocusPainted(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Profesor_select.png"))); // NOI18N
+        bt_profesores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Profesor_default.png"))); // NOI18N
+        bt_profesores.setBorderPainted(false);
+        bt_profesores.setContentAreaFilled(false);
+        bt_profesores.setFocusPainted(false);
+        bt_profesores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_profesores.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Profesor_select.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panel_principalLayout = new javax.swing.GroupLayout(panel_principal);
+        panel_principal.setLayout(panel_principalLayout);
+        panel_principalLayout.setHorizontalGroup(
+            panel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_principalLayout.createSequentialGroup()
                 .addGap(74, 74, 74)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bt_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bt_profesores, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(899, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+        panel_principalLayout.setVerticalGroup(
+            panel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(bt_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(bt_profesores, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout panel_superiorLayout = new javax.swing.GroupLayout(panel_superior);
+        panel_superior.setLayout(panel_superiorLayout);
+        panel_superiorLayout.setHorizontalGroup(
+            panel_superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panel_principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        panel_superiorLayout.setVerticalGroup(
+            panel_superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_superiorLayout.createSequentialGroup()
+                .addComponent(panel_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 482, Short.MAX_VALUE))
         );
 
@@ -84,11 +86,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel_superior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel_superior, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -129,10 +131,18 @@ public class MenuPrincipal extends javax.swing.JFrame {
         });
     }
 
+    public JButton getBt_carrera() {
+        return bt_carrera;
+    }
+
+    public JButton getBt_profesores() {
+        return bt_profesores;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton bt_carrera;
+    private javax.swing.JButton bt_profesores;
+    private javax.swing.JPanel panel_principal;
+    private javax.swing.JPanel panel_superior;
     // End of variables declaration//GEN-END:variables
 }
