@@ -12,11 +12,12 @@ import javax.swing.JPanel;
 public class ControladorMenuPrincipal implements ActionListener{
     private MenuPrincipal view;
     
+    private ControladorEspacioCarrera controlCarrera;
+    
     public ControladorMenuPrincipal(MenuPrincipal view){
         this.view = view;
         asignarControlador();
-        PanelCarrera pc = new PanelCarrera();
-        cambiarPanelInferior(pc);
+        mostrarCarrera();
     }
     
     private void asignarControlador(){
@@ -31,5 +32,11 @@ public class ControladorMenuPrincipal implements ActionListener{
     
     public void cambiarPanelInferior(JPanel panel){
         this.view.getSp_inferior().setViewportView(panel);
+    }
+    
+    private void mostrarCarrera(){
+        PanelCarrera viewCarrera = new PanelCarrera();
+        this.controlCarrera = new ControladorEspacioCarrera(viewCarrera);
+        cambiarPanelInferior(viewCarrera);
     }
 }
