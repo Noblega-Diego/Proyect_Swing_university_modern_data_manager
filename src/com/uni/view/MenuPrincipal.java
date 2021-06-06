@@ -2,7 +2,7 @@
 package com.uni.view;
 
 import javax.swing.JButton;
-
+import javax.swing.JScrollPane;
 /**
  *
  * @author diego
@@ -14,7 +14,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
-        //this.jPanel3 = new PanelErramientas();
     }
 
     /**
@@ -30,6 +29,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panel_principal = new javax.swing.JPanel();
         bt_carrera = new javax.swing.JButton();
         bt_profesores = new javax.swing.JButton();
+        sp_inferior = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,7 +61,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(bt_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_profesores, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(899, Short.MAX_VALUE))
+                .addContainerGap(750, Short.MAX_VALUE))
         );
         panel_principalLayout.setVerticalGroup(
             panel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,17 +69,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addComponent(bt_profesores, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        sp_inferior.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        sp_inferior.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        sp_inferior.setFocusable(false);
+        sp_inferior.setViewport(null);
+
         javax.swing.GroupLayout panel_superiorLayout = new javax.swing.GroupLayout(panel_superior);
         panel_superior.setLayout(panel_superiorLayout);
         panel_superiorLayout.setHorizontalGroup(
             panel_superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 1023, Short.MAX_VALUE)
+            .addComponent(sp_inferior)
         );
         panel_superiorLayout.setVerticalGroup(
             panel_superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_superiorLayout.createSequentialGroup()
                 .addComponent(panel_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 482, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(sp_inferior, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -130,7 +137,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
     }
-
+   
     public JButton getBt_carrera() {
         return bt_carrera;
     }
@@ -138,11 +145,16 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public JButton getBt_profesores() {
         return bt_profesores;
     }
+
+    public JScrollPane getSp_inferior() {
+        return sp_inferior;
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_carrera;
     private javax.swing.JButton bt_profesores;
     private javax.swing.JPanel panel_principal;
     private javax.swing.JPanel panel_superior;
+    private javax.swing.JScrollPane sp_inferior;
     // End of variables declaration//GEN-END:variables
 }
