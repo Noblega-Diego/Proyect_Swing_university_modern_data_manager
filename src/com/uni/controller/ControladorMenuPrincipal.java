@@ -38,5 +38,6 @@ public class ControladorMenuPrincipal implements ActionListener{
         PanelCarrera viewCarrera = new PanelCarrera();
         this.controlCarrera = new ControladorEspacioCarrera(viewCarrera);
         cambiarPanelInferior(viewCarrera);
+        this.controlCarrera.cargarPlanilla();
     }
 }

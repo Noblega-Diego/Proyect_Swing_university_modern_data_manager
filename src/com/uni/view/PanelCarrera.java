@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package com.uni.view;
+
+import javax.swing.JTable;
+
 /**
  *
  * @author diego
@@ -30,7 +33,7 @@ public class PanelCarrera extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table_carrera = new javax.swing.JTable();
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
 
@@ -48,7 +51,7 @@ public class PanelCarrera extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setText("Carreras");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table_carrera.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null}
             },
@@ -64,7 +67,7 @@ public class PanelCarrera extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table_carrera);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -100,12 +103,16 @@ public class PanelCarrera extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+    public JTable getTable_carrera() {
+        return table_carrera;
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table_carrera;
     // End of variables declaration//GEN-END:variables
 }

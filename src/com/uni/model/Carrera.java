@@ -1,7 +1,7 @@
 
 package com.uni.model;
-import java.util.ArrayList;
 import java.util.List;
+import com.uni.dao.DaoCarrera;
 /**
  *
  * @author diego
@@ -35,8 +35,12 @@ public class Carrera {
         this.duracion = duracion;
     }
     
+    
+    
+    
+    //CRUD
+    
     public List<Carrera> listarCarreras(){
-        List<Carrera> lista = new ArrayList<Carrera>();
-        return lista;
+        return DaoCarrera.read();
     }
 }
