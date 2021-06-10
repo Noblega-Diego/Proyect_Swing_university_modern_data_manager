@@ -38,8 +38,6 @@ public class Conexion {
         } catch (ClassNotFoundException | SQLException e) {
             System.err.println("Error De Conexión! :  " + e);
             JOptionPane.showMessageDialog(null, "Error De Conexión A Base De Datos!\n " + e);
-            System.exit(0);
-
         }
 
         return conexion;

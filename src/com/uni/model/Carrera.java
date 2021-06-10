@@ -11,6 +11,15 @@ public class Carrera {
     private String nombre;
     private String duracion;
 
+    public Carrera() {
+    }
+    
+    public Carrera(int codigo, String nombre, String duracion) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.duracion = duracion;
+    }
+    
     public int getCodigo() {
         return codigo;
     }
@@ -43,4 +52,17 @@ public class Carrera {
     public List<Carrera> listarCarreras(){
         return DaoCarrera.read();
     }
+    
+    public void updateCarrera(Carrera carrera){
+        DaoCarrera.update(carrera);
+    }
+    
+    public void createCarrera(Carrera carrera){
+        DaoCarrera.agregar(carrera);
+    }
+    
+    public void delateCarrera(int codigo){
+        DaoCarrera.delete(codigo);
+    }
+    
 }
