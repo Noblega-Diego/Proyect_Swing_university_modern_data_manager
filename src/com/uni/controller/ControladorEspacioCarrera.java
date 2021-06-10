@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import com.uni.view.PanelCarrera;
+import com.uni.view.submenus.PanelCarreraAgregacion;
 import com.uni.view.submenus.PanelCarreraEdicion;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -24,6 +25,7 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
     
     //Controladores
     private ControladorEdicionCarrera EdicionCarrera;
+    private ControladorAgregarCarrera AgregarCarrera;
     
     public ControladorEspacioCarrera(PanelCarrera panelCarrera){
         this.panelCarrera = panelCarrera;
@@ -33,6 +35,8 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
     private void asignarControlador(){
         this.panelCarrera.getBt_edit().addActionListener(this);
         this.panelCarrera.getBt_list().addActionListener(this);
+        this.panelCarrera.getBt_agregar().addActionListener(this);
+        this.panelCarrera.getBt_eliminar().addActionListener(this);
         this.panelCarrera.getTable_carrera().addMouseListener(this);
     }
     
@@ -42,6 +46,8 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
             lista();
         }else if(e.getSource().equals( this.panelCarrera.getBt_edit())){
             editar();
+        }else if(e.getSource().equals( this.panelCarrera.getBt_agregar())){
+            agregar();
         }
     }
     
@@ -69,15 +75,27 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
     
 
     public void editar(){
+        this.AgregarCarrera = null;
+        
         PanelCarreraEdicion panelEdicion = new PanelCarreraEdicion();
         this.EdicionCarrera = new ControladorEdicionCarrera(panelEdicion);
         seleccionarButton(this.panelCarrera.getBt_edit());
         cambiarSubPanel(panelEdicion);
     }
     
+    public void agregar(){
+        this.EdicionCarrera = null;
+        
+        PanelCarreraAgregacion panelAgregacion = new PanelCarreraAgregacion();
+        this.AgregarCarrera = new ControladorAgregarCarrera(panelAgregacion);
+        seleccionarButton(this.panelCarrera.getBt_agregar());
+        cambiarSubPanel(panelAgregacion);
+    }
+    
     private void seleccionarButton(JButton button){
         panelCarrera.getBt_list().setSelected( button.equals(panelCarrera.getBt_list()) );
         panelCarrera.getBt_edit().setSelected( button.equals(panelCarrera.getBt_edit()) );
+        panelCarrera.getBt_agregar().setSelected( button.equals(panelCarrera.getBt_agregar()) );
     }
     
     

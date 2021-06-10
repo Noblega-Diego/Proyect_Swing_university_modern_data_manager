@@ -24,6 +24,7 @@ public class ControladorMenuPrincipal implements ActionListener{
     private void asignarControlador(){
         this.view.getBt_carrera().addActionListener(this);
         this.view.getBt_profesores().addActionListener(this);
+        this.view.getBt_profesores().addActionListener(this);
     }
 
     @Override
@@ -57,5 +58,5 @@ public class ControladorMenuPrincipal implements ActionListener{
         //Implementar el panel de profesores
         cambiarPanelInferior(null);
     }
-    
+
 }

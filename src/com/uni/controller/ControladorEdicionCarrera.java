@@ -62,9 +62,9 @@ public class ControladorEdicionCarrera implements ActionListener{
             String duracion = view.getTxt_duracion().getText();
             String tipoDuracion = (String)view.getCbx_tipoDuracion().getSelectedItem();
             if(tipoDuracion.contains("Año"))
-                duracion += " Año";
+                duracion += " Años";
             else
-                duracion += " Mes";
+                duracion += " Meses";
             carrera.setDuracion(duracion);
             carrera.updateCarrera(carrera);
             System.out.println("Operacion realisada con exito");

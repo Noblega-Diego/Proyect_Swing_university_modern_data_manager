@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class DaoCarrera extends Conexion{
     private static String QUERY_SELECT_CARRERAS = "CALL `GET_CARRERAS`()";
     private static String QUERY_UPDATE_CARRERA = "CALL `UPDATE_CARRERA`(?, ?, ?)";
-    private static String QUERY_CREATE_CARRERA = "CALL `DELETE_CARRERA`(?,?,?)";
+    private static String QUERY_CREATE_CARRERA = "CALL `CREATE_CARRERA`(?,?,?)";
     private static String QUERY_DELETE_CARRERA = "CALL `DELETE_CARRERA`(?)";
             
     public static List<Carrera> read(){

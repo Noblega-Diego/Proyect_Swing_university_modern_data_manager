@@ -61,11 +61,11 @@ public class PanelCarrera extends javax.swing.JPanel {
         bt_edit.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bt_edit.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Edit_select.png"))); // NOI18N
 
-        bt_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Edit_default.png"))); // NOI18N
+        bt_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Agregar_default.png"))); // NOI18N
         bt_agregar.setBorderPainted(false);
         bt_agregar.setContentAreaFilled(false);
         bt_agregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        bt_agregar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Edit_select.png"))); // NOI18N
+        bt_agregar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Agregar_select.png"))); // NOI18N
 
         bt_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Edit_default.png"))); // NOI18N
         bt_eliminar.setBorderPainted(false);
@@ -182,7 +182,7 @@ public class PanelCarrera extends javax.swing.JPanel {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+            .addComponent(jSplitPane1)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -212,6 +212,16 @@ public class PanelCarrera extends javax.swing.JPanel {
     public JButton getBt_list() {
         return bt_list;
     }
+
+    public JButton getBt_agregar() {
+        return bt_agregar;
+    }
+
+    public JButton getBt_eliminar() {
+        return bt_eliminar;
+    }
+    
+    
     
     public void insertarSubMenu(JPanel panel){
         this.jSplitPane1.setLeftComponent(panel);
