@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 import com.uni.view.PanelCarrera;
 import com.uni.view.submenus.PanelCarreraAgregacion;
 import com.uni.view.submenus.PanelCarreraEdicion;
+import com.uni.view.submenus.PanelCarreraEliminacion;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.JButton;
@@ -26,6 +27,7 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
     //Controladores
     private ControladorEdicionCarrera EdicionCarrera;
     private ControladorAgregarCarrera AgregarCarrera;
+    private ControladorEliminacionCarrera EliminacionCarrera;
     
     public ControladorEspacioCarrera(PanelCarrera panelCarrera){
         this.panelCarrera = panelCarrera;
@@ -48,6 +50,8 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
             editar();
         }else if(e.getSource().equals( this.panelCarrera.getBt_agregar())){
             agregar();
+        }else if(e.getSource().equals( this.panelCarrera.getBt_eliminar())){
+            eliminar();
         }
     }
     
@@ -61,6 +65,8 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
                     (String)this.panelCarrera.getTable_carrera().getValueAt(i, 2));
             if(EdicionCarrera != null)
                 EdicionCarrera.ingresarCarreraAEditar(carrera);
+            else if(EliminacionCarrera != null)
+                EliminacionCarrera.ingresarCarreraAEliminar(carrera);
         }
     }
             
@@ -76,6 +82,7 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
 
     public void editar(){
         this.AgregarCarrera = null;
+        this.EliminacionCarrera = null;
         
         PanelCarreraEdicion panelEdicion = new PanelCarreraEdicion();
         this.EdicionCarrera = new ControladorEdicionCarrera(panelEdicion);
@@ -85,6 +92,7 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
     
     public void agregar(){
         this.EdicionCarrera = null;
+        this.EliminacionCarrera = null;
         
         PanelCarreraAgregacion panelAgregacion = new PanelCarreraAgregacion();
         this.AgregarCarrera = new ControladorAgregarCarrera(panelAgregacion);
@@ -92,10 +100,21 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
         cambiarSubPanel(panelAgregacion);
     }
     
+    public void eliminar(){
+        this.EdicionCarrera = null;
+        this.AgregarCarrera = null;
+        
+        PanelCarreraEliminacion panelElimiacion = new PanelCarreraEliminacion();
+        this.EliminacionCarrera = new ControladorEliminacionCarrera(panelElimiacion);
+        seleccionarButton(this.panelCarrera.getBt_eliminar());
+        cambiarSubPanel(panelElimiacion);
+    }
+    
     private void seleccionarButton(JButton button){
         panelCarrera.getBt_list().setSelected( button.equals(panelCarrera.getBt_list()) );
         panelCarrera.getBt_edit().setSelected( button.equals(panelCarrera.getBt_edit()) );
         panelCarrera.getBt_agregar().setSelected( button.equals(panelCarrera.getBt_agregar()) );
+        panelCarrera.getBt_eliminar().setSelected( button.equals(panelCarrera.getBt_eliminar()) );
     }
     
     

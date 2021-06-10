@@ -107,13 +107,13 @@
         <Component class="javax.swing.JButton" name="bt_eliminar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/uni/images/bt_Edit_default.png"/>
+              <Image iconType="3" name="/com/uni/images/bt_Eliminar_default.png"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/com/uni/images/bt_Edit_select.png"/>
+              <Image iconType="3" name="/com/uni/images/bt_Eliminar_select.png"/>
             </Property>
           </Properties>
         </Component>

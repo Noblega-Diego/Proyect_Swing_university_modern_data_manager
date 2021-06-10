@@ -67,11 +67,11 @@ public class PanelCarrera extends javax.swing.JPanel {
         bt_agregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bt_agregar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Agregar_select.png"))); // NOI18N
 
-        bt_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Edit_default.png"))); // NOI18N
+        bt_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Eliminar_default.png"))); // NOI18N
         bt_eliminar.setBorderPainted(false);
         bt_eliminar.setContentAreaFilled(false);
         bt_eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        bt_eliminar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Edit_select.png"))); // NOI18N
+        bt_eliminar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Eliminar_select.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
