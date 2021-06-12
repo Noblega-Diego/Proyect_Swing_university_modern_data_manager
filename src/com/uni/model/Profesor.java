@@ -1,6 +1,7 @@
 
 package com.uni.model;
 
+import com.uni.dao.DaoProfesor;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,18 @@ public class Profesor {
     private String telefono;
     private List<Materia> materias= new ArrayList<Materia>();
 
+    public Profesor() {
+    }
+    
+    public Profesor(int dni, String nombre, String apellido, LocalDate fedchaNacimiento, String domicilio, String telefono) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fedchaNacimiento = fedchaNacimiento;
+        this.domicilio = domicilio;
+        this.telefono = telefono;
+    }
+    
     public int getDni() {
         return dni;
     }
@@ -75,4 +88,23 @@ public class Profesor {
     }
     
     
+        
+    //CRUD
+    
+    public List<Profesor> listarProfesores(){
+        return DaoProfesor.read();
+    }
+    
+    public void updateProfesor(Profesor profesor){
+        DaoProfesor.update(profesor);
+    }
+    
+    public void createProfesor(Profesor profesor){
+        DaoProfesor.agregar(profesor);
+    }
+    
+    public void delateProfesor(int codigo){
+        DaoProfesor.delete(codigo);
+    }
+
 }

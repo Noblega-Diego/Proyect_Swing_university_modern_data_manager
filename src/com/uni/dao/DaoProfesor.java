@@ -4,37 +4,45 @@ import com.uni.dao.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import com.uni.model.Carrera;
+import com.uni.model.Profesor;
 import java.util.ArrayList;
 import java.util.List;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 /**
  *
  * @author diego
  */
-public class DaoCarrera extends Conexion{
-    private static String QUERY_SELECT_CARRERAS = "CALL `GET_CARRERAS`()";
-    private static String QUERY_UPDATE_CARRERA = "CALL `UPDATE_CARRERA`(?, ?, ?)";
-    private static String QUERY_CREATE_CARRERA = "CALL `CREATE_CARRERA`(?,?,?)";
-    private static String QUERY_DELETE_CARRERA = "CALL `CLEAR_CARRERA`(?)";
+public class DaoProfesor extends Conexion{
+    private static String QUERY_SELECT_PROFESOR = "CALL `GET_PROFESORES`()";
+    private static String QUERY_UPDATE_PROFESOR = "CALL `UPDATE_PROFESOR`(?, ?, ?, ?, ?, ?)";
+    private static String QUERY_CREATE_PROFESOR = "CALL `CREATE_PROFESOR`(?,?,?)";
+    private static String QUERY_DELETE_PROFESOR = "CALL `CLEAR_PROFESOR`(?)";
             
-    public static List<Carrera> read(){
+    public static List<Profesor> read(){
         Connection conn = null;
         PreparedStatement pe = null;
         ResultSet rs = null;
-        List<Carrera> listaCarreras = new ArrayList<Carrera>();
+        List<Profesor> listaProfesores = new ArrayList<Profesor>();
+        
         try{
             conn = getConnection();
-            pe = conn.prepareStatement(QUERY_SELECT_CARRERAS);
+            pe = conn.prepareStatement(QUERY_SELECT_PROFESOR);
             rs = pe.executeQuery();// realizamos ua consuta del tipo select, esperando la respuesta de tipo ResultSet
             
             while(rs.next()){
-                Carrera c = new Carrera();
-                c.setCodigo(rs.getInt(1));
-                c.setNombre(rs.getString(2));
-                c.setDuracion(rs.getString(3));
-                listaCarreras.add(c);
+                Profesor p = new Profesor();
+                p.setDni(rs.getInt(1));
+                p.setNombre(rs.getString(2));
+                p.setApellido(rs.getString(3));
+                System.out.println(rs.getString(4));
+                String[] fecha = rs.getString(4).split("-");
+                p.setFedchaNacimiento(LocalDate.of(Integer.valueOf(fecha[0]), Integer.valueOf(fecha[1]), Integer.valueOf(fecha[2])));
+                p.setDomicilio(rs.getString(5));
+                p.setTelefono(rs.getString(6));
+                listaProfesores.add(p);
             }
             
         }catch(SQLException e){
@@ -48,19 +56,24 @@ public class DaoCarrera extends Conexion{
             close(rs);
         }
         
-        return listaCarreras;
+        return listaProfesores;
     }
     
-    public static void update(Carrera carrera){
+    
+    
+    public static void update(Profesor profesor){
         Connection conn = null;
         PreparedStatement pe = null;
         try{
             
             conn = getConnection();
-            pe = conn.prepareStatement(QUERY_UPDATE_CARRERA);
-            pe.setString(1, carrera.getNombre());
-            pe.setString(2, carrera.getDuracion());
-            pe.setInt(3, carrera.getCodigo());
+            pe = conn.prepareStatement(QUERY_UPDATE_PROFESOR);
+            pe.setString(1, profesor.getNombre());
+            pe.setString(2, profesor.getApellido());
+            pe.setString(3, profesor.getFedchaNacimiento().format(DateTimeFormatter.ISO_DATE));
+            pe.setString(4, profesor.getDomicilio());
+            pe.setString(5, profesor.getTelefono());
+            pe.setString(6, String.valueOf(profesor.getDni()));
             
             pe.executeUpdate();//realizamos la peticion tipo update
             System.out.println("Update realizado con exito");
@@ -76,14 +89,14 @@ public class DaoCarrera extends Conexion{
         }
     }
     
-    public static void delete(int cod_carrera){
+    public static void delete(int dni){
         
         Connection conn = null;
         PreparedStatement pe = null;
         try{
             conn = getConnection();
-            pe = conn.prepareStatement(QUERY_DELETE_CARRERA);
-            pe.setInt(1, cod_carrera);
+            pe = conn.prepareStatement(QUERY_DELETE_PROFESOR);
+            pe.setInt(1, dni);
             
             pe.executeUpdate();//realizamos la peticion tipo delete
         }catch(SQLException e){
@@ -98,16 +111,16 @@ public class DaoCarrera extends Conexion{
         }
     }
 
-    public static void agregar(Carrera carrea){
+    
+    //---------------------------------------------------------------EDITAR
+    public static void agregar(Profesor profesor){
         
         Connection conn = null;
         PreparedStatement pe = null;
         try{
             conn = getConnection();
-            pe = conn.prepareStatement(QUERY_CREATE_CARRERA);
-            pe.setString(1, carrea.getNombre());
-            pe.setString(2, carrea.getDuracion());
-            pe.setInt(3, carrea.getCodigo());
+            pe = conn.prepareStatement(QUERY_CREATE_PROFESOR);
+            pe.setString(1, profesor.getNombre());
             
             pe.executeUpdate();//realizamos la peticion tipo create
         }catch(SQLException e){

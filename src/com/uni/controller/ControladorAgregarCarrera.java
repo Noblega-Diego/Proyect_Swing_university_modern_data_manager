@@ -12,9 +12,11 @@ import java.awt.event.ActionListener;
 public class ControladorAgregarCarrera implements ActionListener{
 
     private PanelCarreraAgregacion view;
+    ControladorEspacioCarrera menuCarrera;
     
-    public ControladorAgregarCarrera(PanelCarreraAgregacion view) {
+    public ControladorAgregarCarrera(ControladorEspacioCarrera menuCarrera, PanelCarreraAgregacion view) {
         this.view = view;
+        this.menuCarrera = menuCarrera;
         asignarControlador();
     }
 
@@ -50,7 +52,7 @@ public class ControladorAgregarCarrera implements ActionListener{
             duracion += " Meses";
         carrera.setDuracion(duracion);
         carrera.createCarrera(carrera);
-        System.out.println("Operacion realisada con exito");
+        menuCarrera.recargarPlanilla();
         
     }
 }

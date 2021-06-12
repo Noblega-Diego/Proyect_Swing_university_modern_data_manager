@@ -13,9 +13,11 @@ public class ControladorEdicionCarrera implements ActionListener{
 
     private PanelCarreraEdicion view;
     private Carrera carrera = null;
+    private ControladorEspacioCarrera menuCarrera;
     
-    public ControladorEdicionCarrera(PanelCarreraEdicion view) {
+    public ControladorEdicionCarrera(ControladorEspacioCarrera menuCarrera, PanelCarreraEdicion view) {
         this.view = view;
+        this.menuCarrera = menuCarrera;
         asignarControlador();
     }
 
@@ -67,7 +69,7 @@ public class ControladorEdicionCarrera implements ActionListener{
                 duracion += " Meses";
             carrera.setDuracion(duracion);
             carrera.updateCarrera(carrera);
-            System.out.println("Operacion realisada con exito");
+            menuCarrera.recargarPlanilla();
         }
     }
 }

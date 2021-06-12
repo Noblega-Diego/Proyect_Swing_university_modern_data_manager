@@ -52,7 +52,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="panel_principal" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="sp_inferior" pref="482" max="32767" attributes="0"/>
+                  <Component id="sp_inferior" pref="558" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -123,9 +123,6 @@
             <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
             <Property name="verticalScrollBarPolicy" type="int" value="21"/>
             <Property name="focusable" type="boolean" value="false"/>
-            <Property name="viewport" type="javax.swing.JViewport" editor="org.netbeans.modules.form.ComponentChooserEditor">
-              <ComponentRef name="null"/>
-            </Property>
           </Properties>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>

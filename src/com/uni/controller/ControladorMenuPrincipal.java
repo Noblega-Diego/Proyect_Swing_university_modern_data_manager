@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import com.uni.view.MenuPrincipal;
 import com.uni.view.PanelCarrera;
+import com.uni.view.PanelProfesor;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 /**
@@ -13,7 +14,11 @@ import javax.swing.JPanel;
 public class ControladorMenuPrincipal implements ActionListener{
     private MenuPrincipal view;
     
+    
+    //Controladores
     private ControladorEspacioCarrera controlCarrera;
+    private ControladorEspacioProfesor controlProfesor;
+    
     
     public ControladorMenuPrincipal(MenuPrincipal view){
         this.view = view;
@@ -56,7 +61,10 @@ public class ControladorMenuPrincipal implements ActionListener{
     private void mostrarProfesores(){
         seleccionarButton( this.view.getBt_profesores() );
         //Implementar el panel de profesores
-        cambiarPanelInferior(null);
+        PanelProfesor panelProfesor = new PanelProfesor();
+        this.controlProfesor = new ControladorEspacioProfesor(panelProfesor);
+        cambiarPanelInferior(panelProfesor);
+        this.controlProfesor.cargarPlanilla();
     }
 
 }

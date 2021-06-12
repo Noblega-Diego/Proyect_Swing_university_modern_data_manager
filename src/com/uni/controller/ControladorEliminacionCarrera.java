@@ -1,7 +1,6 @@
 package com.uni.controller;
 
 import com.uni.model.Carrera;
-import com.uni.view.submenus.PanelCarreraEdicion;
 import com.uni.view.submenus.PanelCarreraEliminacion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,9 +13,12 @@ public class ControladorEliminacionCarrera implements ActionListener{
 
     private PanelCarreraEliminacion view;
     private Carrera carrera = null;
+    private ControladorEspacioCarrera menuCarrera;
     
-    public ControladorEliminacionCarrera(PanelCarreraEliminacion view) {
+    public ControladorEliminacionCarrera(ControladorEspacioCarrera menuCarrera, PanelCarreraEliminacion view) {
         this.view = view;
+        this.menuCarrera = menuCarrera;
+
         asignarControlador();
     }
 
@@ -54,5 +56,7 @@ public class ControladorEliminacionCarrera implements ActionListener{
         view.getLb_codigoCarrera().setText("");
         view.getLb_nombre().setText("");
         view.getLb_duracionCarrera().setText("");
+        menuCarrera.recargarPlanilla();
+
     }
 }

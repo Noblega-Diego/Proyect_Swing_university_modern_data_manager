@@ -84,30 +84,38 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
         this.AgregarCarrera = null;
         this.EliminacionCarrera = null;
         
-        PanelCarreraEdicion panelEdicion = new PanelCarreraEdicion();
-        this.EdicionCarrera = new ControladorEdicionCarrera(panelEdicion);
-        seleccionarButton(this.panelCarrera.getBt_edit());
-        cambiarSubPanel(panelEdicion);
+        if(EdicionCarrera == null){ // Se verifica si esta vacia la El controlador de edicion de carrera 
+        // Esta condicion se implemento luego de verificar a traves del profiler la cantidad de memoria utilizada al momento de hacer click repetidas veces en los diferentes button.
+            System.gc(); // Se llama al Recolector de basura, con el fin de forzar el borrado de los paneles anteriores
+            PanelCarreraEdicion panelEdicion = new PanelCarreraEdicion();
+            this.EdicionCarrera = new ControladorEdicionCarrera(this, panelEdicion);
+            seleccionarButton(this.panelCarrera.getBt_edit());
+            cambiarSubPanel(panelEdicion);
+        }
     }
     
     public void agregar(){
         this.EdicionCarrera = null;
         this.EliminacionCarrera = null;
-        
-        PanelCarreraAgregacion panelAgregacion = new PanelCarreraAgregacion();
-        this.AgregarCarrera = new ControladorAgregarCarrera(panelAgregacion);
-        seleccionarButton(this.panelCarrera.getBt_agregar());
-        cambiarSubPanel(panelAgregacion);
+        if(AgregarCarrera == null){
+            System.gc();
+            PanelCarreraAgregacion panelAgregacion = new PanelCarreraAgregacion();
+            this.AgregarCarrera = new ControladorAgregarCarrera(this, panelAgregacion);
+            seleccionarButton(this.panelCarrera.getBt_agregar());
+            cambiarSubPanel(panelAgregacion);
+        }
     }
     
     public void eliminar(){
         this.EdicionCarrera = null;
         this.AgregarCarrera = null;
-        
-        PanelCarreraEliminacion panelElimiacion = new PanelCarreraEliminacion();
-        this.EliminacionCarrera = new ControladorEliminacionCarrera(panelElimiacion);
-        seleccionarButton(this.panelCarrera.getBt_eliminar());
-        cambiarSubPanel(panelElimiacion);
+        if(EliminacionCarrera == null){
+            System.gc();
+            PanelCarreraEliminacion panelElimiacion = new PanelCarreraEliminacion();
+            this.EliminacionCarrera = new ControladorEliminacionCarrera(this, panelElimiacion);
+            seleccionarButton(this.panelCarrera.getBt_eliminar());
+            cambiarSubPanel(panelElimiacion);
+        }
     }
     
     private void seleccionarButton(JButton button){
@@ -122,6 +130,7 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
     
     //Visualiza la tabla
     public void cargarPlanilla(){
+        clearTable();
         modeloTabla = (DefaultTableModel) panelCarrera.getTable_carrera().getModel();
         List<Carrera> listaCarreras = carrera.listarCarreras();
         Object[] fila = new Object[3];
@@ -137,10 +146,28 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
         panelCarrera.getTable_carrera().setModel(modeloTabla);
     }
 
+    public void recargarPlanilla(){
+        clearTable();
+        List<Carrera> listaCarreras = carrera.listarCarreras();
+        Object[] fila = new Object[3];
+        for(int i = 0; i< listaCarreras.size(); i++){
+              if(listaCarreras.get(i) != null){
+                fila[0] = new Integer(listaCarreras.get(i).getCodigo());
+                fila[1] = listaCarreras.get(i).getNombre();
+                fila[2] = listaCarreras.get(i).getDuracion();
+                modeloTabla.addRow(fila);
+            }
+        }
+        listaCarreras = null;
+        panelCarrera.getTable_carrera().setModel(modeloTabla);
+    }
     
-    
-    
-    
+    public void clearTable() {
+        for (int i = 0; i < panelCarrera.getTable_carrera().getRowCount(); i++) {
+            modeloTabla.removeRow(i);
+            i -= 1;
+        }
+    }
     
     
     

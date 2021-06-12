@@ -72,7 +72,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         sp_inferior.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         sp_inferior.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         sp_inferior.setFocusable(false);
-        sp_inferior.setViewport(null);
 
         javax.swing.GroupLayout panel_superiorLayout = new javax.swing.GroupLayout(panel_superior);
         panel_superior.setLayout(panel_superiorLayout);
@@ -86,7 +85,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(panel_superiorLayout.createSequentialGroup()
                 .addComponent(panel_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(sp_inferior, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE))
+                .addComponent(sp_inferior, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
