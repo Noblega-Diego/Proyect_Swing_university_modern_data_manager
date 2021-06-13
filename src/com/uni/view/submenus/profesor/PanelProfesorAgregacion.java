@@ -1,5 +1,6 @@
 package com.uni.view.submenus.profesor;
 
+import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -39,6 +40,9 @@ public class PanelProfesorAgregacion extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         txt_telefono = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        dc_FechaNacimiento = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
@@ -93,6 +97,14 @@ public class PanelProfesorAgregacion extends javax.swing.JPanel {
         jLabel12.setForeground(new java.awt.Color(204, 204, 204));
         jLabel12.setText("Telefono:");
 
+        jLabel13.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel13.setText("Materia:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        dc_FechaNacimiento.setDateFormatString("y-M-d");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -105,6 +117,7 @@ public class PanelProfesorAgregacion extends javax.swing.JPanel {
                         .addComponent(bt_confirmacion))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -116,10 +129,10 @@ public class PanelProfesorAgregacion extends javax.swing.JPanel {
                             .addComponent(txt_telefono)
                             .addComponent(txt_apellido, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txt_nombre)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(txt_domicilio))))
+                            .addComponent(txt_domicilio)
+                            .addComponent(txt_dni)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dc_FechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -134,8 +147,14 @@ public class PanelProfesorAgregacion extends javax.swing.JPanel {
                     .addComponent(jLabel9)
                     .addComponent(txt_apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(txt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addComponent(dc_FechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(txt_domicilio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -145,9 +164,9 @@ public class PanelProfesorAgregacion extends javax.swing.JPanel {
                     .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txt_dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                    .addComponent(jLabel13)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addComponent(bt_confirmacion)
                 .addContainerGap())
         );
@@ -214,21 +233,41 @@ public class PanelProfesorAgregacion extends javax.swing.JPanel {
         return bt_confirmacion;
     }
 
+    public JDateChooser getDc_FechaNacimiento() {
+        return dc_FechaNacimiento;
+    }
+
+    public JTextField getTxt_apellido() {
+        return txt_apellido;
+    }
+
+    public JTextField getTxt_dni() {
+        return txt_dni;
+    }
+
+    public JTextField getTxt_domicilio() {
+        return txt_domicilio;
+    }
+
     public JTextField getTxt_nombre() {
         return txt_nombre;
     }
 
-
-    public JTextField getTxt_codigo() {
-        return txt_dni;
+    public JTextField getTxt_telefono() {
+        return txt_telefono;
     }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_confirmacion;
+    private com.toedter.calendar.JDateChooser dc_FechaNacimiento;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

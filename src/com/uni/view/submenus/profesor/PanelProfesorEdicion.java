@@ -58,7 +58,7 @@ public class PanelProfesorEdicion extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(102, 102, 102));
         setForeground(new java.awt.Color(102, 102, 102));
-        setMinimumSize(new java.awt.Dimension(320, 555));
+        setMinimumSize(new java.awt.Dimension(332, 555));
         setPreferredSize(new java.awt.Dimension(300, 555));
         setRequestFocusEnabled(false);
 

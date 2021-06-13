@@ -79,7 +79,7 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
         this.AgregarCarrera = null;
         this.EliminacionCarrera = null;
         seleccionarButton(this.panelCarrera.getBt_list());
-        cambiarSubPanel(new JPanel());
+        cambiarSubPanel(null);
     }
     
 

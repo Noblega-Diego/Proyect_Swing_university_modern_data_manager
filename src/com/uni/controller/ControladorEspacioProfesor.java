@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import com.uni.view.PanelProfesor;
+import com.uni.view.submenus.profesor.PanelProfesorAgregacion;
 import com.uni.view.submenus.profesor.PanelProfesorEdicion;
 import com.uni.view.submenus.profesor.PanelProfesorEliminacion;
 import java.awt.event.MouseEvent;
@@ -27,7 +28,7 @@ public class ControladorEspacioProfesor implements ActionListener, MouseListener
     
     //Controladores
     private ControladorEdicionProfesor EdicionProfesor;
-//    private ControladorAgregarProfesor AgregarProfesor;
+    private ControladorAgregarProfesor AgregarProfesor;
     private ControladorEliminacionProfesor EliminacionProfesor;
     
     public ControladorEspacioProfesor(PanelProfesor panelCarrera){
@@ -83,36 +84,45 @@ public class ControladorEspacioProfesor implements ActionListener, MouseListener
     }
     
     public void lista(){
+        this.AgregarProfesor = null;
+        this.EliminacionProfesor = null;
+        this.EdicionProfesor = null;
+        
         seleccionarButton(this.panelProfesor.getBt_list());
-        cambiarSubPanel(new JPanel());
+        cambiarSubPanel(null);
     }
     
 
     public void editar(){
-//        this.AgregarProfesor = null;
-//        this.EliminacionProfesor = null;
+        this.AgregarProfesor = null;
+        this.EliminacionProfesor = null;
         
-        PanelProfesorEdicion panelEdicion = new PanelProfesorEdicion();
-        this.EdicionProfesor = new ControladorEdicionProfesor(this, panelEdicion);
-        cambiarSubPanel(panelEdicion);
+        if(this.EdicionProfesor == null){
+            PanelProfesorEdicion panelEdicion = new PanelProfesorEdicion();
+            this.EdicionProfesor = new ControladorEdicionProfesor(this, panelEdicion);
+            cambiarSubPanel(panelEdicion);
+        }
     }
     
     public void agregar(){
-//        this.EdicionProfesor = null;
-//        this.EliminacionProfessor = null;
-//        
-//        PanelCarreraAgregacion panelAgregacion = new PanelCarreraAgregacion();
-//        this.AgregarProfesor = new ControladorAgregarProfesor(this, panelAgregacion);
-//        cambiarSubPanel(panelAgregacion);
+        this.EdicionProfesor = null;
+        this.EliminacionProfesor = null;
+        if(this.AgregarProfesor == null){
+            PanelProfesorAgregacion panelAgregacion = new PanelProfesorAgregacion();
+            this.AgregarProfesor = new ControladorAgregarProfesor(this, panelAgregacion);
+            cambiarSubPanel(panelAgregacion);
+        }
     }
     
     public void eliminar(){
         this.EdicionProfesor = null;
-        //this.AgregarProfesor = null;
+        this.AgregarProfesor = null;
         
-        PanelProfesorEliminacion panelElimiacion = new PanelProfesorEliminacion();
-        this.EliminacionProfesor = new ControladorEliminacionProfesor(this, panelElimiacion);
-        cambiarSubPanel(panelElimiacion);
+        if (this.EliminacionProfesor == null){
+            PanelProfesorEliminacion panelElimiacion = new PanelProfesorEliminacion();
+            this.EliminacionProfesor = new ControladorEliminacionProfesor(this, panelElimiacion);
+            cambiarSubPanel(panelElimiacion);
+        }
     }
     
     private void seleccionarButton(JButton button){

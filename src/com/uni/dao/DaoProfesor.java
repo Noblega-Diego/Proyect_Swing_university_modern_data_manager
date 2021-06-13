@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 public class DaoProfesor extends Conexion{
     private static String QUERY_SELECT_PROFESOR = "CALL `GET_PROFESORES`()";
     private static String QUERY_UPDATE_PROFESOR = "CALL `UPDATE_PROFESOR`(?,?,?,?,?,?)";
-    private static String QUERY_CREATE_PROFESOR = "CALL `CREATE_PROFESOR`(?,?,?)";
+    private static String QUERY_CREATE_PROFESOR = "CALL `CREATE_PROFESOR`(?,?,?,?,?,?)";
     private static String QUERY_DELETE_PROFESOR = "CALL `CLEAR_PROFESOR`(?)";
             
     public static List<Profesor> read(){
@@ -121,6 +121,11 @@ public class DaoProfesor extends Conexion{
             conn = getConnection();
             pe = conn.prepareStatement(QUERY_CREATE_PROFESOR);
             pe.setString(1, profesor.getNombre());
+            pe.setString(2, profesor.getApellido());
+            pe.setString(3, profesor.getFedchaNacimiento().format(DateTimeFormatter.ISO_DATE));
+            pe.setString(4, profesor.getDomicilio());
+            pe.setString(5, profesor.getTelefono());
+            pe.setInt(6, profesor.getDni());
             
             pe.executeUpdate();//realizamos la peticion tipo create
         }catch(SQLException e){
