@@ -1,12 +1,12 @@
 
 package com.uni.controller;
-import com.uni.model.Carrera;
 import com.uni.model.Profesor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import com.uni.view.PanelProfesor;
 import com.uni.view.submenus.profesor.PanelProfesorEdicion;
+import com.uni.view.submenus.profesor.PanelProfesorEliminacion;
 import java.awt.event.MouseEvent;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -28,7 +28,7 @@ public class ControladorEspacioProfesor implements ActionListener, MouseListener
     //Controladores
     private ControladorEdicionProfesor EdicionProfesor;
 //    private ControladorAgregarProfesor AgregarProfesor;
-//    private ControladorEliminacionProfesor EliminacionProfesor;
+    private ControladorEliminacionProfesor EliminacionProfesor;
     
     public ControladorEspacioProfesor(PanelProfesor panelCarrera){
         this.panelProfesor = panelCarrera;
@@ -73,8 +73,8 @@ public class ControladorEspacioProfesor implements ActionListener, MouseListener
                     );
             if(EdicionProfesor != null)
                 EdicionProfesor.ingresarProfesorAEditar(profesor);
-//            else if(EliminacionProfesor != null)
-//                EliminacionProfesor.ingresarCarreraAEliminar(carrera);
+            else if(EliminacionProfesor != null)
+                EliminacionProfesor.ingresarProfesorAEditar(profesor);
         }
     }
             
@@ -107,12 +107,12 @@ public class ControladorEspacioProfesor implements ActionListener, MouseListener
     }
     
     public void eliminar(){
-//        this.EdicionProfesor = null;
-//        this.AgregarProfesor = null;
-//        
-//        PanelCarreraEliminacion panelElimiacion = new PanelCarreraEliminacion();
-//        this.EliminacionProfesor = new ControladorEliminacionProfesor(this, panelElimiacion);
-//        cambiarSubPanel(panelElimiacion);
+        this.EdicionProfesor = null;
+        //this.AgregarProfesor = null;
+        
+        PanelProfesorEliminacion panelElimiacion = new PanelProfesorEliminacion();
+        this.EliminacionProfesor = new ControladorEliminacionProfesor(this, panelElimiacion);
+        cambiarSubPanel(panelElimiacion);
     }
     
     private void seleccionarButton(JButton button){
