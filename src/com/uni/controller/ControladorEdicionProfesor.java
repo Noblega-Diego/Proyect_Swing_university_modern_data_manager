@@ -6,6 +6,7 @@ import com.uni.view.submenus.profesor.PanelProfesorEdicion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -51,7 +52,6 @@ public class ControladorEdicionProfesor implements ActionListener{
         view.getDc_FechaNacimiento().setDate(new Date(fecha.getYear() - 1900, fecha.getMonth().getValue() -1, fecha.getDayOfMonth()));
         view.getTxt_domicilio().setText(profesor.getDomicilio());
         view.getTxt_telefono().setText(profesor.getTelefono());
-        view.getTxt_dni().setText(String.valueOf(profesor.getDni()));
 
     }
     
@@ -60,10 +60,14 @@ public class ControladorEdicionProfesor implements ActionListener{
     private void actualizar() {
         if(profesor != null){
             profesor.setNombre(view.getTxt_nombre().getText());
-            profesor.setApellido(view.getTxt_nombre().getText());
-            profesor.setDomicilio(view.getTxt_nombre().getText());
-            profesor.setTelefono(view.getTxt_nombre().getText());
-            profesor.setDni(Integer.valueOf(view.getTxt_dni().getText()));
+            profesor.setApellido(view.getTxt_apellido().getText());
+            Calendar fecha = view.getDc_FechaNacimiento().getCalendar();
+            profesor.setFedchaNacimiento(LocalDate.of(
+                    fecha.get(Calendar.YEAR),  //Año
+                    fecha.get(Calendar.MONTH)+1,  //Mes
+                    fecha.get(Calendar.DAY_OF_MONTH)));//dia
+            profesor.setDomicilio(view.getTxt_domicilio().getText());
+            profesor.setTelefono(view.getTxt_telefono().getText());
             profesor.updateProfesor(profesor);
             menuProfesor.recargarPlanilla();
         }

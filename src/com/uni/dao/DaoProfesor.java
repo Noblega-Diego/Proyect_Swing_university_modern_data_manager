@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class DaoProfesor extends Conexion{
     private static String QUERY_SELECT_PROFESOR = "CALL `GET_PROFESORES`()";
-    private static String QUERY_UPDATE_PROFESOR = "CALL `UPDATE_PROFESOR`(?, ?, ?, ?, ?, ?)";
+    private static String QUERY_UPDATE_PROFESOR = "CALL `UPDATE_PROFESOR`(?,?,?,?,?,?)";
     private static String QUERY_CREATE_PROFESOR = "CALL `CREATE_PROFESOR`(?,?,?)";
     private static String QUERY_DELETE_PROFESOR = "CALL `CLEAR_PROFESOR`(?)";
             
@@ -73,7 +73,7 @@ public class DaoProfesor extends Conexion{
             pe.setString(3, profesor.getFedchaNacimiento().format(DateTimeFormatter.ISO_DATE));
             pe.setString(4, profesor.getDomicilio());
             pe.setString(5, profesor.getTelefono());
-            pe.setString(6, String.valueOf(profesor.getDni()));
+            pe.setInt(6, profesor.getDni());
             
             pe.executeUpdate();//realizamos la peticion tipo update
             System.out.println("Update realizado con exito");

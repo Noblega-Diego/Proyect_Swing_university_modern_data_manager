@@ -147,22 +147,17 @@ public class ControladorEspacioProfesor implements ActionListener, MouseListener
     }
 
     public void recargarPlanilla(){
-//        modeloTabla = (DefaultTableModel) panelCarrera.getTable_carrera().getModel();
-//        List<Carrera> listaCarreras = carrera.listarCarreras();
-//        Object[] fila = new Object[3];
-//        for(int i = 0; i< listaCarreras.size(); i++){
-//              if(listaCarreras.get(i) != null){
-//                fila[0] = new Integer(listaCarreras.get(i).getCodigo());
-//                fila[1] = listaCarreras.get(i).getNombre();
-//                fila[2] = listaCarreras.get(i).getDuracion();
-//                modeloTabla.addRow(fila);
-//            }
-//        }
-//        listaCarreras = null;
-//        panelCarrera.getTable_carrera().setModel(modeloTabla);
+        clearTable();
+        cargarPlanilla();
     }
     
-    
+    public void clearTable() {
+        if(modeloTabla != null)
+            for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+                modeloTabla.removeRow(i);
+                i -= 1;
+            }
+    }
     
     
     

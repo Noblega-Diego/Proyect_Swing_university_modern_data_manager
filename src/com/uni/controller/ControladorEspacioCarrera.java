@@ -75,6 +75,9 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
     }
     
     public void lista(){
+        this.EdicionCarrera = null;
+        this.AgregarCarrera = null;
+        this.EliminacionCarrera = null;
         seleccionarButton(this.panelCarrera.getBt_list());
         cambiarSubPanel(new JPanel());
     }
@@ -130,7 +133,6 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
     
     //Visualiza la tabla
     public void cargarPlanilla(){
-        clearTable();
         modeloTabla = (DefaultTableModel) panelCarrera.getTable_carrera().getModel();
         List<Carrera> listaCarreras = carrera.listarCarreras();
         Object[] fila = new Object[3];
@@ -148,25 +150,15 @@ public class ControladorEspacioCarrera implements ActionListener, MouseListener{
 
     public void recargarPlanilla(){
         clearTable();
-        List<Carrera> listaCarreras = carrera.listarCarreras();
-        Object[] fila = new Object[3];
-        for(int i = 0; i< listaCarreras.size(); i++){
-              if(listaCarreras.get(i) != null){
-                fila[0] = new Integer(listaCarreras.get(i).getCodigo());
-                fila[1] = listaCarreras.get(i).getNombre();
-                fila[2] = listaCarreras.get(i).getDuracion();
-                modeloTabla.addRow(fila);
-            }
-        }
-        listaCarreras = null;
-        panelCarrera.getTable_carrera().setModel(modeloTabla);
+        cargarPlanilla();
     }
     
     public void clearTable() {
-        for (int i = 0; i < panelCarrera.getTable_carrera().getRowCount(); i++) {
-            modeloTabla.removeRow(i);
-            i -= 1;
-        }
+        if(modeloTabla != null)
+            for (int i = 0; i < modeloTabla.getRowCount(); i++) {
+                modeloTabla.removeRow(i);
+                i -= 1;
+            }
     }
     
     
