@@ -1,14 +1,13 @@
 
 package com.uni.controller;
 import com.uni.model.Materia;
+import com.uni.model.Profesor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import com.uni.view.PanelMateria;
 import com.uni.view.submenus.materia.PanelMateriaAgregacion;
-//import com.uni.view.submenus.profesor.PanelMateriaAgregacion;
-//import com.uni.view.submenus.profesor.PanelMateriaEdicion;
-//import com.uni.view.submenus.profesor.PanelMateriaEliminacion;
+import com.uni.view.submenus.materia.PanelMateriaEdicion;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.JButton;
@@ -26,7 +25,7 @@ public class ControladorEspacioMateria implements ActionListener, MouseListener{
     private DefaultTableModel modeloTabla;
     
     //Controladores
-//    private ControladorEdicionMateria EdicionProfesor;
+    private ControladorEdicionMateria EdicionMateria;
     private ControladorAgregarMateria AgregarMateria;
 //    private ControladorEliminacionProfesor EliminacionProfesor;
     
@@ -59,23 +58,21 @@ public class ControladorEspacioMateria implements ActionListener, MouseListener{
     
     @Override
     public void mouseClicked(MouseEvent e) {
-//        int i;
-//        if(e.getSource().equals(this.panelMateria.getTable_Materia())){
-//            i = this.panelMateria.getTable_Materia().rowAtPoint(e.getPoint());
-//            String[] fecha = ((String)this.panelMateria.getTable_Materia().getValueAt(i, 3)).split("-");
-//            Materia materia = new Materia(
-//                    (Integer)this.panelMateria.getTable_Materia().getValueAt(i, 0),
-//                    (String)this.panelMateria.getTable_Materia().getValueAt(i, 1),
-//                    (String)this.panelMateria.getTable_Materia().getValueAt(i, 2),
-//                    LocalDate.of(Integer.valueOf(fecha[0]), Integer.valueOf(fecha[1]), Integer.valueOf(fecha[2])),
-//                    (String)this.panelMateria.getTable_Materia().getValueAt(i, 4),
-//                    (String)this.panelMateria.getTable_Materia().getValueAt(i, 5)
-//                    );
-//            if(EdicionMateria != null)
-//                EdicionMateria.ingresarProfesorAEditar(profesor);
+        int i;
+        if(e.getSource().equals(this.panelMateria.getTable_Materia())){
+            i = this.panelMateria.getTable_Materia().rowAtPoint(e.getPoint());
+              Profesor profACargo = new Profesor();
+              profACargo = Profesor.seleccionarProfesor((Integer)this.panelMateria.getTable_Materia().getValueAt(i, 2));
+              Materia materia = new Materia(
+                    (Integer)this.panelMateria.getTable_Materia().getValueAt(i, 0),
+                    (String)this.panelMateria.getTable_Materia().getValueAt(i, 1),
+                    profACargo
+                    );
+            if(EdicionMateria != null)
+                EdicionMateria.ingresarMateriaAEditar(materia);
 //            else if(EliminacionMateria != null)
 //                EliminacionMateria.ingresarProfesorAEditar(profesor);
-//        }
+        }
     }
             
     public void cambiarSubPanel(JPanel panel){
@@ -83,9 +80,9 @@ public class ControladorEspacioMateria implements ActionListener, MouseListener{
     }
     
     public void lista(){
-//        this.AgregarMateria = null;
+        this.AgregarMateria = null;
 //        this.EliminacionMateria = null;
-//        this.EdicionMateria = null;
+        this.EdicionMateria = null;
         
         seleccionarButton(this.panelMateria.getBt_list());
         cambiarSubPanel(null);
@@ -93,18 +90,19 @@ public class ControladorEspacioMateria implements ActionListener, MouseListener{
     
 
     public void editar(){
-//        this.AgregarMateria = null;
+        this.AgregarMateria = null;
 //        this.EliminacionMateria = null;
-//        
-//        if(this.EdicionMateria == null){
-//            PanelMateriaEdicion panelEdicion = new PanelMateriaEdicion();
-//            this.EdicionMateria = new ControladorEdicionMateria(this, panelEdicion);
-//            cambiarSubPanel(panelEdicion);
-//        }
+        
+        if(this.EdicionMateria == null){
+            PanelMateriaEdicion panelEdicion = new PanelMateriaEdicion();
+            this.EdicionMateria = new ControladorEdicionMateria(this, panelEdicion);
+            cambiarSubPanel(panelEdicion);
+            this.EdicionMateria.cargarProfesoresDisponibles();
+        }
     }
     
     public void agregar(){
-//        this.EdicionMateria = null;
+        this.EdicionMateria = null;
 //        this.EliminacionMateria = null;
         
         if(this.AgregarMateria == null){

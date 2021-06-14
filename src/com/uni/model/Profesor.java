@@ -107,6 +107,12 @@ public class Profesor {
         DaoProfesor.delete(codigo);
     }
 
+    //CRUD FIND
+    public static Profesor seleccionarProfesor(int dni){
+        return DaoProfesor.select(dni);
+    }
+    
+    
     @Override
     public String toString() {
         return "dni: " + dni;
