@@ -16,11 +16,13 @@ import java.time.format.DateTimeFormatter;
  * @author diego
  */
 public class DaoProfesor extends Conexion{
-    private static String QUERY_SELECT_PROFESOR = "CALL `GET_PROFESORES`()";
+    private static String QUERY_SELECT_PROFESORES = "CALL `GET_PROFESORES`()";
     private static String QUERY_UPDATE_PROFESOR = "CALL `UPDATE_PROFESOR`(?,?,?,?,?,?)";
     private static String QUERY_CREATE_PROFESOR = "CALL `CREATE_PROFESOR`(?,?,?,?,?,?)";
     private static String QUERY_DELETE_PROFESOR = "CALL `CLEAR_PROFESOR`(?)";
-            
+    //Consultas de filtrado
+    private static String QUERY_FIL_SELECT_PROFESOR = "CALL `GET_PROFESOR`(?)";
+    
     public static List<Profesor> read(){
         Connection conn = null;
         PreparedStatement pe = null;
@@ -29,7 +31,7 @@ public class DaoProfesor extends Conexion{
         
         try{
             conn = getConnection();
-            pe = conn.prepareStatement(QUERY_SELECT_PROFESOR);
+            pe = conn.prepareStatement(QUERY_SELECT_PROFESORES);
             rs = pe.executeQuery();// realizamos ua consuta del tipo select, esperando la respuesta de tipo ResultSet
             
             while(rs.next()){
@@ -138,5 +140,40 @@ public class DaoProfesor extends Conexion{
             close(conn);
             close(pe);
         }
+    }
+    
+    public static Profesor select(int dni){
+        Connection conn = null;
+        PreparedStatement pe = null;
+        ResultSet rs = null;
+        Profesor p = null;
+        try{
+            conn = getConnection();
+            pe = conn.prepareStatement(QUERY_FIL_SELECT_PROFESOR);
+            pe.setInt(1, dni);
+            rs = pe.executeQuery();// realizamos una consuta del tipo select, esperando la respuesta de tipo ResultSet
+            rs.next();
+            p = new Profesor();
+            p.setDni(rs.getInt(1));
+            p.setNombre(rs.getString(2));
+            p.setApellido(rs.getString(3));
+            System.out.println(rs.getString(4));
+            String[] fecha = rs.getString(4).split("-");
+            p.setFedchaNacimiento(LocalDate.of(Integer.valueOf(fecha[0]), Integer.valueOf(fecha[1]), Integer.valueOf(fecha[2])));
+            p.setDomicilio(rs.getString(5));
+            p.setTelefono(rs.getString(6));
+            
+        }catch(SQLException e){
+            System.out.println("Error al obtener Profesor: " + e);
+        }catch(Exception e){
+            System.err.println("Error desconocido: " + e);
+        }
+        finally{
+            //finalizamos la conexion
+            close(conn);
+            close(rs);
+        }
+        
+        return p;
     }
 }

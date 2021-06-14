@@ -98,6 +98,7 @@ public class ControladorEspacioProfesor implements ActionListener, MouseListener
         this.EliminacionProfesor = null;
         
         if(this.EdicionProfesor == null){
+            System.gc();
             PanelProfesorEdicion panelEdicion = new PanelProfesorEdicion();
             this.EdicionProfesor = new ControladorEdicionProfesor(this, panelEdicion);
             cambiarSubPanel(panelEdicion);
@@ -108,6 +109,7 @@ public class ControladorEspacioProfesor implements ActionListener, MouseListener
         this.EdicionProfesor = null;
         this.EliminacionProfesor = null;
         if(this.AgregarProfesor == null){
+            System.gc();
             PanelProfesorAgregacion panelAgregacion = new PanelProfesorAgregacion();
             this.AgregarProfesor = new ControladorAgregarProfesor(this, panelAgregacion);
             cambiarSubPanel(panelAgregacion);
@@ -119,6 +121,7 @@ public class ControladorEspacioProfesor implements ActionListener, MouseListener
         this.AgregarProfesor = null;
         
         if (this.EliminacionProfesor == null){
+            System.gc();
             PanelProfesorEliminacion panelElimiacion = new PanelProfesorEliminacion();
             this.EliminacionProfesor = new ControladorEliminacionProfesor(this, panelElimiacion);
             cambiarSubPanel(panelElimiacion);

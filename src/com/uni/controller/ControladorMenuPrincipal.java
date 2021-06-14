@@ -1,9 +1,10 @@
-
+ 
 package com.uni.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import com.uni.view.MenuPrincipal;
 import com.uni.view.PanelCarrera;
+import com.uni.view.PanelMateria;
 import com.uni.view.PanelProfesor;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -18,6 +19,7 @@ public class ControladorMenuPrincipal implements ActionListener{
     //Controladores
     private ControladorEspacioCarrera controlCarrera;
     private ControladorEspacioProfesor controlProfesor;
+    private ControladorEspacioMateria controlMateria;
     
     
     public ControladorMenuPrincipal(MenuPrincipal view){
@@ -29,7 +31,7 @@ public class ControladorMenuPrincipal implements ActionListener{
     private void asignarControlador(){
         this.view.getBt_carrera().addActionListener(this);
         this.view.getBt_profesores().addActionListener(this);
-        this.view.getBt_profesores().addActionListener(this);
+        this.view.getBt_materias().addActionListener(this);
     }
 
     @Override
@@ -38,6 +40,8 @@ public class ControladorMenuPrincipal implements ActionListener{
             mostrarCarrera();
         }else if(e.getSource().equals(this.view.getBt_profesores())){
             mostrarProfesores();
+        }else if(e.getSource().equals(this.view.getBt_materias())){
+            mostrarMaterias();
         }
     }
     
@@ -48,6 +52,7 @@ public class ControladorMenuPrincipal implements ActionListener{
     private void seleccionarButton(JButton button){
         view.getBt_carrera().setSelected( view.getBt_carrera().equals(button) );
         view.getBt_profesores().setSelected( view.getBt_profesores().equals(button) );
+        view.getBt_materias().setSelected( view.getBt_materias().equals(button) );
     }
     
     private void mostrarCarrera(){
@@ -60,11 +65,18 @@ public class ControladorMenuPrincipal implements ActionListener{
     
     private void mostrarProfesores(){
         seleccionarButton( this.view.getBt_profesores() );
-        //Implementar el panel de profesores
         PanelProfesor panelProfesor = new PanelProfesor();
         this.controlProfesor = new ControladorEspacioProfesor(panelProfesor);
         cambiarPanelInferior(panelProfesor);
         this.controlProfesor.cargarPlanilla();
+    }    
+    
+    private void mostrarMaterias(){
+        seleccionarButton( this.view.getBt_materias());
+        PanelMateria panelMateria = new PanelMateria();
+        this.controlMateria = new ControladorEspacioMateria(panelMateria);
+        cambiarPanelInferior(panelMateria);
+        this.controlMateria.cargarPlanilla();
     }
 
 }

@@ -91,20 +91,25 @@ public class Profesor {
         
     //CRUD
     
-    public List<Profesor> listarProfesores(){
+    public static List<Profesor> listarProfesores(){
         return DaoProfesor.read();
     }
     
-    public void updateProfesor(Profesor profesor){
+    public static void updateProfesor(Profesor profesor){
         DaoProfesor.update(profesor);
     }
     
-    public void createProfesor(Profesor profesor){
+    public static void createProfesor(Profesor profesor){
         DaoProfesor.agregar(profesor);
     }
     
-    public void delateProfesor(int codigo){
+    public static void delateProfesor(int codigo){
         DaoProfesor.delete(codigo);
     }
 
+    @Override
+    public String toString() {
+        return "dni: " + dni;
+    }
+    
 }

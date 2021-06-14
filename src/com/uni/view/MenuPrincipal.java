@@ -29,6 +29,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panel_principal = new javax.swing.JPanel();
         bt_carrera = new javax.swing.JButton();
         bt_profesores = new javax.swing.JButton();
+        bt_materias = new javax.swing.JButton();
+        bt_alumnos = new javax.swing.JButton();
         sp_inferior = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -52,21 +54,41 @@ public class MenuPrincipal extends javax.swing.JFrame {
         bt_profesores.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         bt_profesores.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Profesor_select.png"))); // NOI18N
 
+        bt_materias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Materia_default.png"))); // NOI18N
+        bt_materias.setBorderPainted(false);
+        bt_materias.setContentAreaFilled(false);
+        bt_materias.setFocusPainted(false);
+        bt_materias.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_materias.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Materia_select.png"))); // NOI18N
+
+        bt_alumnos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Estudiante_default.png"))); // NOI18N
+        bt_alumnos.setBorderPainted(false);
+        bt_alumnos.setContentAreaFilled(false);
+        bt_alumnos.setFocusPainted(false);
+        bt_alumnos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_alumnos.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/com/uni/images/bt_Estudiante_select.png"))); // NOI18N
+
         javax.swing.GroupLayout panel_principalLayout = new javax.swing.GroupLayout(panel_principal);
         panel_principal.setLayout(panel_principalLayout);
         panel_principalLayout.setHorizontalGroup(
             panel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_principalLayout.createSequentialGroup()
-                .addGap(74, 74, 74)
+                .addGap(124, 124, 124)
                 .addComponent(bt_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_profesores, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(750, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_materias, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_alumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(496, Short.MAX_VALUE))
         );
         panel_principalLayout.setVerticalGroup(
             panel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bt_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(bt_carrera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(bt_profesores, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(bt_materias, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(bt_alumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         sp_inferior.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -148,9 +170,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public JScrollPane getSp_inferior() {
         return sp_inferior;
     }
+
+    public JButton getBt_alumnos() {
+        return bt_alumnos;
+    }
+
+    public JButton getBt_materias() {
+        return bt_materias;
+    }
+    
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_alumnos;
     private javax.swing.JButton bt_carrera;
+    private javax.swing.JButton bt_materias;
     private javax.swing.JButton bt_profesores;
     private javax.swing.JPanel panel_principal;
     private javax.swing.JPanel panel_superior;

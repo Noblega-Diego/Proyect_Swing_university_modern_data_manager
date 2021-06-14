@@ -14,12 +14,12 @@ import javax.swing.JTable;
  *
  * @author diego
  */
-public class PanelProfesor extends javax.swing.JPanel {
+public class PanelMateria extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelCarrera
      */
-    public PanelProfesor() {
+    public PanelMateria() {
         initComponents();
         insertarSubMenu(new JPanel());
     }
@@ -103,6 +103,8 @@ public class PanelProfesor extends javax.swing.JPanel {
         jSplitPane1.setDividerSize(4);
         jSplitPane1.setForeground(new java.awt.Color(102, 255, 153));
 
+        jPanel4.setBackground(new java.awt.Color(222, 222, 222));
+
         table.setBackground(new java.awt.Color(234, 234, 234));
         table.setForeground(new java.awt.Color(51, 51, 51));
         table.setModel(new javax.swing.table.DefaultTableModel(
@@ -110,14 +112,14 @@ public class PanelProfesor extends javax.swing.JPanel {
 
             },
             new String [] {
-                "dni", "nombre", "apellido", "Fecha Nacimiento", "Domicilio", "Telefono"
+                "codigo", "nombre", "dni del profesor"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -135,7 +137,7 @@ public class PanelProfesor extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel1.setText("Profesores");
+        jLabel1.setText("Materias");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -201,7 +203,7 @@ public class PanelProfesor extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    public JTable getTable_profesor() {
+    public JTable getTable_Materia() {
         return table;
     }
 

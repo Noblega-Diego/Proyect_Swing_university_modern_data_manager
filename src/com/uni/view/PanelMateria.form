@@ -154,6 +154,11 @@
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
           <SubComponents>
             <Container class="javax.swing.JPanel" name="jPanel4">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="de" green="de" red="de" type="rgb"/>
+                </Property>
+              </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
                   <JSplitPaneConstraints position="right"/>
@@ -204,13 +209,10 @@
                           <Color blue="33" green="33" red="33" type="rgb"/>
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                          <Table columnCount="6" rowCount="0">
-                            <Column editable="false" title="dni" type="java.lang.Integer"/>
+                          <Table columnCount="3" rowCount="0">
+                            <Column editable="false" title="codigo" type="java.lang.Integer"/>
                             <Column editable="false" title="nombre" type="java.lang.String"/>
-                            <Column editable="false" title="apellido" type="java.lang.String"/>
-                            <Column editable="false" title="Fecha Nacimiento" type="java.lang.String"/>
-                            <Column editable="false" title="Domicilio" type="java.lang.String"/>
-                            <Column editable="false" title="Telefono" type="java.lang.String"/>
+                            <Column editable="false" title="dni del profesor" type="java.lang.String"/>
                           </Table>
                         </Property>
                         <Property name="autoResizeMode" type="int" value="1"/>
@@ -228,7 +230,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="33" green="33" red="33" type="rgb"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Profesores"/>
+                    <Property name="text" type="java.lang.String" value="Materias"/>
                   </Properties>
                 </Component>
               </SubComponents>
