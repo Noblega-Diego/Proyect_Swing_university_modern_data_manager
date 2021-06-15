@@ -2,8 +2,11 @@
 package com.uni.view.submenus.profesor;
 
 import com.toedter.calendar.JDateChooser;
+import com.uni.model.Materia;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JTextField;
 
 /**
@@ -47,18 +50,18 @@ public class PanelProfesorEdicion extends javax.swing.JPanel {
         dc_FechaNacimiento = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        lst_MateriasDictadas = new javax.swing.JList<>();
+        cb_MateriasDisponibles = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        bt_confirmacionEdicion1 = new javax.swing.JButton();
-        bt_confirmacionEdicion2 = new javax.swing.JButton();
+        bt_eliminacionMateria = new javax.swing.JButton();
+        bt_transferirMateria = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(102, 102, 102));
         setForeground(new java.awt.Color(102, 102, 102));
-        setMinimumSize(new java.awt.Dimension(332, 555));
+        setMinimumSize(new java.awt.Dimension(369, 555));
         setPreferredSize(new java.awt.Dimension(300, 555));
         setRequestFocusEnabled(false);
 
@@ -117,61 +120,58 @@ public class PanelProfesorEdicion extends javax.swing.JPanel {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Materias Dictadas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), new java.awt.Color(103, 243, 193))); // NOI18N
         jPanel4.setForeground(new java.awt.Color(102, 102, 102));
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(lst_MateriasDictadas);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cb_MateriasDisponibles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_MateriasDisponibles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cb_MateriasDisponiblesActionPerformed(evt);
             }
         });
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel7.setText(" Agregar:");
+        jLabel7.setText(" Materias Disponibles:");
 
         jLabel13.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(204, 204, 204));
         jLabel13.setText(" Materias Dictadas:");
 
-        bt_confirmacionEdicion1.setBackground(new java.awt.Color(51, 51, 51));
-        bt_confirmacionEdicion1.setForeground(new java.awt.Color(224, 52, 52));
-        bt_confirmacionEdicion1.setText("Eliminar materia");
-        bt_confirmacionEdicion1.setBorderPainted(false);
-        bt_confirmacionEdicion1.setFocusable(false);
-        bt_confirmacionEdicion1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        bt_confirmacionEdicion1.setMargin(new java.awt.Insets(2, 12, 2, 12));
-        bt_confirmacionEdicion1.addActionListener(new java.awt.event.ActionListener() {
+        bt_eliminacionMateria.setBackground(new java.awt.Color(51, 51, 51));
+        bt_eliminacionMateria.setForeground(new java.awt.Color(224, 52, 52));
+        bt_eliminacionMateria.setText("Eliminar materia");
+        bt_eliminacionMateria.setBorderPainted(false);
+        bt_eliminacionMateria.setFocusable(false);
+        bt_eliminacionMateria.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_eliminacionMateria.setMargin(new java.awt.Insets(2, 12, 2, 12));
+        bt_eliminacionMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_confirmacionEdicion1ActionPerformed(evt);
+                bt_eliminacionMateriaActionPerformed(evt);
             }
         });
 
-        bt_confirmacionEdicion2.setBackground(new java.awt.Color(51, 51, 51));
-        bt_confirmacionEdicion2.setForeground(new java.awt.Color(103, 243, 193));
-        bt_confirmacionEdicion2.setText("añadir");
-        bt_confirmacionEdicion2.setBorderPainted(false);
-        bt_confirmacionEdicion2.setFocusable(false);
-        bt_confirmacionEdicion2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_transferirMateria.setBackground(new java.awt.Color(51, 51, 51));
+        bt_transferirMateria.setForeground(new java.awt.Color(103, 243, 193));
+        bt_transferirMateria.setText("Transferir");
+        bt_transferirMateria.setBorderPainted(false);
+        bt_transferirMateria.setFocusable(false);
+        bt_transferirMateria.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_confirmacionEdicion2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bt_transferirMateria))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cb_MateriasDisponibles, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(bt_confirmacionEdicion1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_eliminacionMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
@@ -185,12 +185,12 @@ public class PanelProfesorEdicion extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cb_MateriasDisponibles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bt_confirmacionEdicion2))
+                        .addComponent(bt_transferirMateria))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bt_confirmacionEdicion1)
+                .addComponent(bt_eliminacionMateria)
                 .addGap(0, 23, Short.MAX_VALUE))
         );
 
@@ -327,13 +327,13 @@ public class PanelProfesorEdicion extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cb_MateriasDisponiblesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_MateriasDisponiblesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cb_MateriasDisponiblesActionPerformed
 
-    private void bt_confirmacionEdicion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_confirmacionEdicion1ActionPerformed
+    private void bt_eliminacionMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_eliminacionMateriaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bt_confirmacionEdicion1ActionPerformed
+    }//GEN-LAST:event_bt_eliminacionMateriaActionPerformed
 
     public JButton getBt_confirmacionEdicion() {
         return bt_confirmacionEdicion;
@@ -368,14 +368,29 @@ public class PanelProfesorEdicion extends javax.swing.JPanel {
         return dc_FechaNacimiento;
     }
 
+    public JList<Object> getLst_MateriasDictadas() {
+        return lst_MateriasDictadas;
+    }
 
+    public JButton getBt_eliminacionMateria() {
+        return bt_eliminacionMateria;
+    }
+
+    public JButton getBt_transferirMateria() {
+        return bt_transferirMateria;
+    }
+
+    public JComboBox<Object> getCb_MateriasDisponibles() {
+        return cb_MateriasDisponibles;
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_confirmacionEdicion;
-    private javax.swing.JButton bt_confirmacionEdicion1;
-    private javax.swing.JButton bt_confirmacionEdicion2;
+    private javax.swing.JButton bt_eliminacionMateria;
+    private javax.swing.JButton bt_transferirMateria;
+    private javax.swing.JComboBox<Object> cb_MateriasDisponibles;
     private com.toedter.calendar.JDateChooser dc_FechaNacimiento;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -386,7 +401,6 @@ public class PanelProfesorEdicion extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -394,6 +408,7 @@ public class PanelProfesorEdicion extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lb_dni;
     private javax.swing.JLabel lb_nombre;
+    private javax.swing.JList<Object> lst_MateriasDictadas;
     private javax.swing.JTextField txt_apellido;
     private javax.swing.JTextField txt_domicilio;
     private javax.swing.JTextField txt_nombre;

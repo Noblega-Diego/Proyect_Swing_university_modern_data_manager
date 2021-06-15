@@ -1,5 +1,6 @@
 
 package com.uni.controller;
+import com.uni.model.Materia;
 import com.uni.model.Profesor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -58,6 +59,8 @@ public class ControladorEspacioProfesor implements ActionListener, MouseListener
         }
     }
     
+    
+    //Asignamos materia a editar en los paneles de editar y eliminar
     @Override
     public void mouseClicked(MouseEvent e) {
         int i;
@@ -72,9 +75,11 @@ public class ControladorEspacioProfesor implements ActionListener, MouseListener
                     (String)this.panelProfesor.getTable_profesor().getValueAt(i, 4),
                     (String)this.panelProfesor.getTable_profesor().getValueAt(i, 5)
                     );
-            if(EdicionProfesor != null)
+            
+            if(EdicionProfesor != null){
+                profesor.setMaterias( Materia.listarMateriaProfesor(profesor.getDni()) ); //Agregamos las materias al Profesor
                 EdicionProfesor.ingresarProfesorAEditar(profesor);
-            else if(EliminacionProfesor != null)
+            }else if(EliminacionProfesor != null)
                 EliminacionProfesor.ingresarProfesorAEditar(profesor);
         }
     }

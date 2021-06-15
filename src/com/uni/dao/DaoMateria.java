@@ -21,6 +21,8 @@ public class DaoMateria extends Conexion{
     private static String QUERY_DELETE_MATERIA = "CALL `CLEAR_MATERIA`(?)";
     //Consultas de filtrado
     private static String QUERY_FIL_SELECT_MATERIA = "CALL `GET_MATERIA`(?)";
+    private static String QUERY_FIL_SELECT_MATERIAS_WHERE_PROFESOR = "CALL `GET_MATERIAS_PROFESOR`(?)";
+    private static String QUERY_FIL_SELECT_MATERIAS_WHERE_NOT_PROFESOR = "CALL `GET_MATERIAS_NOT_PROFESOR`(?)";
             
     public static List<Materia> read(){
         Connection conn = null;
@@ -68,7 +70,10 @@ public class DaoMateria extends Conexion{
             conn = getConnection();
             pe = conn.prepareStatement(QUERY_UPDATE_MATERIA);
             pe.setString(1, materia.getNombre());
-            pe.setInt(2, materia.getProfesor().getDni());
+            if(materia.getProfesor() != null)
+                pe.setInt(2, materia.getProfesor().getDni());
+            else
+                pe.setNull(2, 0);
             pe.setInt(3, materia.getCodigo());
             
             pe.executeUpdate();//realizamos la peticion tipo update
@@ -108,7 +113,6 @@ public class DaoMateria extends Conexion{
     }
 
     
-    //---------------------------------------------------------------EDITAR
     public static void agregar(Materia materia){
         
         Connection conn = null;
@@ -134,5 +138,46 @@ public class DaoMateria extends Conexion{
             close(conn);
             close(pe);
         }
+    }
+
+    //filter
+    public static List<Materia> readFilProfesor(int dniProfesor, boolean coincide) {
+        Connection conn = null;
+        PreparedStatement pe = null;
+        ResultSet rs = null;
+        List<Materia> listaMaterias = new ArrayList<Materia>();
+        
+        try{
+            conn = getConnection();
+            if(coincide)
+                pe = conn.prepareStatement(QUERY_FIL_SELECT_MATERIAS_WHERE_PROFESOR);
+            else
+                pe = conn.prepareStatement(QUERY_FIL_SELECT_MATERIAS_WHERE_NOT_PROFESOR);
+            pe.setInt(1, dniProfesor);
+            rs = pe.executeQuery();// realizamos ua consuta del tipo select, esperando la respuesta de tipo ResultSet
+            while(rs.next()){
+                Materia materia = new Materia();
+                materia.setCodigo(rs.getInt(1));
+                materia.setNombre(rs.getString(2));
+                if(rs.getInt(3)!= 0);{
+                    Profesor profesor = DaoProfesor.select(rs.getInt(3));
+                    materia.setProfesor(profesor);
+                }
+                listaMaterias.add(materia);
+            }
+        }catch(SQLException e){
+            System.out.println("Error al obtener: " + e);
+        }catch(Exception e){
+            System.err.println("Error desconocido: " + e);
+        }
+        finally{
+            //finalizamos la conexion
+            close(conn);
+            close(rs);
+        }
+        
+        
+        
+        return listaMaterias;
     }
 }

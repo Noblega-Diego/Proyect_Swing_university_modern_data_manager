@@ -1,6 +1,7 @@
 
 package com.uni.model;
 import com.uni.dao.DaoMateria;
+import com.uni.dao.DaoProfesor;
 import java.util.List;
 import java.util.ArrayList;
 /**
@@ -57,21 +58,35 @@ public class Materia {
             
     //CRUD
     
-    public List<Materia> listarMaterias(){
+    public static List<Materia> listarMaterias(){
         return DaoMateria.read();
     }
     
-    public void updateMateria(Materia materia){
+    public static void updateMateria(Materia materia){
         DaoMateria.update(materia);
     }
     
-    public void createMateria(Materia materia){
+    public static void createMateria(Materia materia){
         DaoMateria.agregar(materia);
     }
     
-    public void delateMateria(int codigo){
+    public static void delateMateria(int codigo){
         DaoMateria.delete(codigo);
     }
 
+    //CRUD FIND
+    
+    public static List<Materia> listarMateriaProfesor(int dniProfesor){
+        return DaoMateria.readFilProfesor(dniProfesor, true);
+    }
+    
+    public static List<Materia> listarMateriaNoSonProfesor(int dniProfesor){
+        return DaoMateria.readFilProfesor(dniProfesor, false);
+    }
+
+    @Override
+    public String toString() {
+        return "" + codigo + ": " + nombre;
+    }
     
 }
