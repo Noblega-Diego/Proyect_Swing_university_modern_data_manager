@@ -1,5 +1,5 @@
 
-package com.uni.view.submenus.profesor;
+package com.uni.view.submenus.materia;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -8,12 +8,12 @@ import javax.swing.JLabel;
  *
  * @author diego
  */
-public class PanelProfesorEliminacion extends javax.swing.JPanel {
+public class PanelMateriaEliminacion extends javax.swing.JPanel {
 
     /**
      * Creates new form PanelCarreraEdicion
      */
-    public PanelProfesorEliminacion() {
+    public PanelMateriaEliminacion() {
         initComponents();
     }
 
@@ -30,18 +30,12 @@ public class PanelProfesorEliminacion extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         bt_confirmacionEliminacion = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        lb_dni = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        lb_apellido = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        lb_nombre = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        lb_fechaNacimiento = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        lb_domicilio = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        lb_telefono = new javax.swing.JLabel();
+        lb_NombreMateria = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        lb_docenteACargo = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        lb_codigo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
 
@@ -53,11 +47,11 @@ public class PanelProfesorEliminacion extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(224, 52, 52));
-        jLabel1.setText("Eliminar Profesor");
+        jLabel1.setText("Eliminar Materia");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel2.setText("Profesor Seleccionado");
+        jLabel2.setText("Materia Seleccionada");
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Descripción", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), new java.awt.Color(224, 52, 52))); // NOI18N
@@ -70,47 +64,26 @@ public class PanelProfesorEliminacion extends javax.swing.JPanel {
         bt_confirmacionEliminacion.setFocusable(false);
         bt_confirmacionEliminacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel4.setText("DNI:");
-
-        lb_dni.setForeground(new java.awt.Color(255, 255, 255));
-        lb_dni.setText("DNI");
-
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel5.setText("Apellido:");
-
-        lb_apellido.setForeground(new java.awt.Color(255, 255, 255));
-        lb_apellido.setText("Apellido");
-
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
         jLabel6.setText("Nombre:");
 
-        lb_nombre.setForeground(new java.awt.Color(255, 255, 255));
-        lb_nombre.setText("Nombre");
+        lb_NombreMateria.setForeground(new java.awt.Color(255, 255, 255));
+        lb_NombreMateria.setText("Nombre");
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel7.setText("Fec. Nacimiento:");
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel10.setText("Docente a cargo:");
 
-        lb_fechaNacimiento.setForeground(new java.awt.Color(255, 255, 255));
-        lb_fechaNacimiento.setText("-- / -- / -----");
+        lb_docenteACargo.setForeground(new java.awt.Color(255, 255, 255));
+        lb_docenteACargo.setText("Nombre");
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel8.setText("Domicilio");
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel11.setText("Codigo:");
 
-        lb_domicilio.setForeground(new java.awt.Color(255, 255, 255));
-        lb_domicilio.setText("lugar de recidencia");
-
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel9.setText("Telefono");
-
-        lb_telefono.setForeground(new java.awt.Color(255, 255, 255));
-        lb_telefono.setText("contacto");
+        lb_codigo.setForeground(new java.awt.Color(255, 255, 255));
+        lb_codigo.setText("codigo");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -120,32 +93,20 @@ public class PanelProfesorEliminacion extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lb_apellido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 155, Short.MAX_VALUE)
                         .addComponent(bt_confirmacionEliminacion))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lb_dni, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lb_nombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(lb_NombreMateria, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lb_fechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel10)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lb_docenteACargo, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
+                        .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lb_domicilio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lb_telefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(lb_codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -153,28 +114,16 @@ public class PanelProfesorEliminacion extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(lb_nombre))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(lb_NombreMateria))
+                .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(lb_apellido))
+                    .addComponent(jLabel11)
+                    .addComponent(lb_codigo))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(lb_dni))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(lb_fechaNacimiento))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(lb_domicilio))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(lb_telefono))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(lb_docenteACargo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
                 .addComponent(bt_confirmacionEliminacion)
                 .addContainerGap())
         );
@@ -242,51 +191,31 @@ public class PanelProfesorEliminacion extends javax.swing.JPanel {
         return bt_confirmacionEliminacion;
     }
 
-    public JLabel getLb_dni() {
-        return lb_dni;
+    public JLabel getLb_codigo() {
+        return lb_codigo;
     }
 
-    public JLabel getLb_apellido() {
-        return lb_apellido;
+    public JLabel getLb_NombreDocenteACargo() {
+        return lb_docenteACargo;
     }
 
-    public JLabel getLb_domicilio() {
-        return lb_domicilio;
+    public JLabel getLb_NombreMateria() {
+        return lb_NombreMateria;
     }
-
-    public JLabel getLb_fechaNacimiento() {
-        return lb_fechaNacimiento;
-    }
-
-    public JLabel getLb_nombre() {
-        return lb_nombre;
-    }
-
-    public JLabel getLb_telefono() {
-        return lb_telefono;
-    }
-
-
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_confirmacionEliminacion;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lb_apellido;
-    private javax.swing.JLabel lb_dni;
-    private javax.swing.JLabel lb_domicilio;
-    private javax.swing.JLabel lb_fechaNacimiento;
-    private javax.swing.JLabel lb_nombre;
-    private javax.swing.JLabel lb_telefono;
+    private javax.swing.JLabel lb_NombreMateria;
+    private javax.swing.JLabel lb_codigo;
+    private javax.swing.JLabel lb_docenteACargo;
     // End of variables declaration//GEN-END:variables
 }

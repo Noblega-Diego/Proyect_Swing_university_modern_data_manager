@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import com.uni.view.PanelMateria;
 import com.uni.view.submenus.materia.PanelMateriaAgregacion;
 import com.uni.view.submenus.materia.PanelMateriaEdicion;
+import com.uni.view.submenus.materia.PanelMateriaEliminacion;
 import java.awt.event.MouseEvent;
 import java.util.List;
 import javax.swing.JButton;
@@ -27,7 +28,7 @@ public class ControladorEspacioMateria implements ActionListener, MouseListener{
     //Controladores
     private ControladorEdicionMateria EdicionMateria;
     private ControladorAgregarMateria AgregarMateria;
-//    private ControladorEliminacionProfesor EliminacionProfesor;
+    private ControladorEliminacionMateria EliminacionMateria;
     
     public ControladorEspacioMateria(PanelMateria panelMateria){
         this.panelMateria = panelMateria;
@@ -70,8 +71,8 @@ public class ControladorEspacioMateria implements ActionListener, MouseListener{
                     );
             if(EdicionMateria != null)
                 EdicionMateria.ingresarMateriaAEditar(materia);
-//            else if(EliminacionMateria != null)
-//                EliminacionMateria.ingresarProfesorAEditar(profesor);
+            else if(EliminacionMateria != null)
+                EliminacionMateria.ingresarMateriaAEditar(materia);
         }
     }
             
@@ -81,7 +82,7 @@ public class ControladorEspacioMateria implements ActionListener, MouseListener{
     
     public void lista(){
         this.AgregarMateria = null;
-//        this.EliminacionMateria = null;
+        this.EliminacionMateria = null;
         this.EdicionMateria = null;
         
         seleccionarButton(this.panelMateria.getBt_list());
@@ -91,9 +92,10 @@ public class ControladorEspacioMateria implements ActionListener, MouseListener{
 
     public void editar(){
         this.AgregarMateria = null;
-//        this.EliminacionMateria = null;
+        this.EliminacionMateria = null;
         
         if(this.EdicionMateria == null){
+            System.gc();
             PanelMateriaEdicion panelEdicion = new PanelMateriaEdicion();
             this.EdicionMateria = new ControladorEdicionMateria(this, panelEdicion);
             cambiarSubPanel(panelEdicion);
@@ -103,7 +105,7 @@ public class ControladorEspacioMateria implements ActionListener, MouseListener{
     
     public void agregar(){
         this.EdicionMateria = null;
-//        this.EliminacionMateria = null;
+        this.EliminacionMateria = null;
         
         if(this.AgregarMateria == null){
             System.gc();
@@ -115,14 +117,14 @@ public class ControladorEspacioMateria implements ActionListener, MouseListener{
     }
     
     public void eliminar(){
-//        this.EdicionMateria = null;
-//        this.AgregarMateria = null;
-//        
-//        if (this.EliminacionMateria == null){
-//            PanelMateriaEliminacion panelElimiacion = new PanelMateriaEliminacion();
-//            this.EliminacionMateria = new ControladorEliminacionMateria(this, panelElimiacion);
-//            cambiarSubPanel(panelElimiacion);
-//        }
+        this.EdicionMateria = null;
+        this.AgregarMateria = null;
+        
+        if (this.EliminacionMateria == null){
+            PanelMateriaEliminacion panelElimiacion = new PanelMateriaEliminacion();
+            this.EliminacionMateria = new ControladorEliminacionMateria(this, panelElimiacion);
+            cambiarSubPanel(panelElimiacion);
+        }
     }
     
     private void seleccionarButton(JButton button){
