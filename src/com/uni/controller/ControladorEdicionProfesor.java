@@ -50,6 +50,8 @@ public class ControladorEdicionProfesor implements ActionListener{
             actualizar();
         }else if(e.getSource().equals(this.view.getBt_eliminacionMateria())){
             eliminarMateria();
+        }else if(e.getSource().equals(this.view.getBt_transferirMateria())){
+            trasferirMateria();
         }
     }
     
@@ -91,19 +93,43 @@ public class ControladorEdicionProfesor implements ActionListener{
     }
     
     private void trasferirMateria(){
-        
+        int indexSelected = this.view.getCb_MateriasDisponibles().getSelectedIndex();
+        DefaultComboBoxModel modeloTabla = new DefaultComboBoxModel();
+        for(int i = 0; i < this.view.getCb_MateriasDisponibles().getModel().getSize(); i++){
+            if(i != indexSelected){
+                modeloTabla.addElement(this.view.getCb_MateriasDisponibles().getModel().getElementAt(i));
+            }else{
+                DefaultListModel modelolistaMaterias = (DefaultListModel) this.view.getLst_MateriasDictadas().getModel();
+                modelolistaMaterias.addElement(this.view.getCb_MateriasDisponibles().getModel().getElementAt(i));
+                
+                this.materiasDejadas.remove(this.view.getCb_MateriasDisponibles().getModel().getElementAt(i));
+                this.view.getLst_MateriasDictadas().setModel(modelolistaMaterias);
+                modelolistaMaterias = null;
+            }
+        }
+        this.view.getCb_MateriasDisponibles().setModel(modeloTabla);
+        modeloTabla = null;
     }
     
     private void eliminarMateria(){
         int indexMateriaDelate = this.view.getLst_MateriasDictadas().getSelectedIndex();
         DefaultListModel modeloMaterias = new DefaultListModel();
         for (int i = 0; i < view.getLst_MateriasDictadas().getModel().getSize(); i++) {
-            if(i != indexMateriaDelate)
+            if(i != indexMateriaDelate){
                 modeloMaterias.addElement(this.view.getLst_MateriasDictadas().getModel().getElementAt(i));
-            else
+            }else{
+                //Trasladamos la materia al combBox de materias disponibles
+                DefaultComboBoxModel materiasDisonibles = (DefaultComboBoxModel)this.view.getCb_MateriasDisponibles().getModel();
+                materiasDisonibles.addElement(this.view.getLst_MateriasDictadas().getModel().getElementAt(i));
+                
+                //insertamos la tabla con la materia 
+                this.view.getCb_MateriasDisponibles().setModel(materiasDisonibles);
                 this.materiasDejadas.add((Materia) this.view.getLst_MateriasDictadas().getModel().getElementAt(i));
+                materiasDisonibles = null;
+            }
         }
         this.view.getLst_MateriasDictadas().setModel(modeloMaterias);
+        modeloMaterias = null;
     }
     
     
@@ -126,7 +152,7 @@ public class ControladorEdicionProfesor implements ActionListener{
             //Acutualizamos la lista de materias del profesor
             List<Materia> materias = new ArrayList<>();
             for (int i = 0; i < view.getLst_MateriasDictadas().getModel().getSize(); i++) {
-                    materias.add((Materia) this.view.getLst_MateriasDictadas().getModel().getElementAt(i));
+                materias.add((Materia) this.view.getLst_MateriasDictadas().getModel().getElementAt(i));
             }
             profesor.setMaterias(materias);
             

@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 
@@ -72,9 +71,13 @@ public class ControladorEdicionMateria implements ActionListener, ItemListener{
         view.getLb_MateriaCodigo().setText(String.valueOf( this.materia.getCodigo() ));
         view.getLb_MateriaNombre().setText( this.materia.getNombre() );
         view.getTxt_nombreMateria().setText( this.materia.getNombre() );
-        view.getTxt_ProfesorACargoDni().setText(String.valueOf( this.materia.getProfesor().getDni() ));
-        view.getTxt_ProfesorACargoNombre().setText( this.materia.getProfesor().getNombre() + " " +this.materia.getProfesor().getApellido());
-        
+        if(this.materia.getProfesor() != null){
+            view.getTxt_ProfesorACargoDni().setText(String.valueOf( this.materia.getProfesor().getDni() ));
+            view.getTxt_ProfesorACargoNombre().setText( this.materia.getProfesor().getNombre() + " " +this.materia.getProfesor().getApellido());
+        }else{
+            view.getTxt_ProfesorACargoDni().setText("");
+            view.getTxt_ProfesorACargoNombre().setText("");
+        }
         view.getCb_ProfesorATransferir().setEnabled(true);
         view.getTxt_ProfesorATransferirDni().setText("");
         view.getTxt_ProfesorATransferirNombre().setText("");

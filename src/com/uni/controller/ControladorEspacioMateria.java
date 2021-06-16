@@ -146,7 +146,11 @@ public class ControladorEspacioMateria implements ActionListener, MouseListener{
               if(listaMaterias.get(i) != null){
                 fila[0] = new Integer(listaMaterias.get(i).getCodigo());
                 fila[1] = listaMaterias.get(i).getNombre();
-                fila[2] = listaMaterias.get(i).getProfesor().getDni();
+                if(listaMaterias.get(i).getProfesor() != null) 
+                    fila[2] = listaMaterias.get(i).getProfesor().getDni();
+                else 
+                    fila[2] = 0;
+                
                 modeloTabla.addRow(fila);
             }
         }

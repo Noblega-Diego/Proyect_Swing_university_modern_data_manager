@@ -147,6 +147,7 @@ public class DaoProfesor extends Conexion{
         PreparedStatement pe = null;
         ResultSet rs = null;
         Profesor p = null;
+        if(dni != 0)
         try{
             conn = getConnection();
             pe = conn.prepareStatement(QUERY_FIL_SELECT_PROFESOR);
