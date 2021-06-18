@@ -1,0 +1,10 @@
+DELIMITER $$
+
+USE `sgauni512`$$
+
+DROP PROCEDURE IF EXISTS `GET_CARRERA`$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GET_CARRERA`(IN codigo INT(11))
+SELECT * FROM `carrera` WHERE `car_cod`=codigo$$
+
+DELIMITER ;

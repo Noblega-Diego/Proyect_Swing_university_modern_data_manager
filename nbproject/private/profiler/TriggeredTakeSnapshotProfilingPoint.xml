@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<entry key="0_p_enabled">true</entry>
+<entry key="0_p_reset_results">false</entry>
+<entry key="0_p_triggcond_metric">1</entry>
+<entry key="0_p_target">project</entry>
+<entry key="0_p_file">C:\Users\diego\AppData\Local\Temp\</entry>
+<entry key="0_p_name">Triggered Take Snapsho Memoryt in adminUniversidad</entry>
+<entry key="0_p_snapshot">profdata</entry>
+<entry key="0_p_triggcond_onetime">false</entry>
+<entry key="0_p_triggcond_value">36</entry>
+</properties>

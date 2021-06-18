@@ -1,0 +1,10 @@
+DELIMITER $$
+
+USE `sgauni512`$$
+
+DROP PROCEDURE IF EXISTS `CLEAR_CARRERA`$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CLEAR_MATERIA`(IN codigo INTEGER(11))
+DELETE FROM materia WHERE `mat_cod`=codigo$$
+
+DELIMITER ;

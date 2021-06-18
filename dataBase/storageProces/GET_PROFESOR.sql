@@ -1,0 +1,10 @@
+DELIMITER $$
+
+USE `sgauni512`$$
+
+DROP PROCEDURE IF EXISTS `GET_PROFESOR`$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `GET_PROFESOR`(IN dni INT(11))
+SELECT * FROM `profesor` WHERE `prof_dni`=dni$$
+
+DELIMITER ;
