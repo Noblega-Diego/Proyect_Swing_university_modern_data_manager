@@ -43,7 +43,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="panel_principal" pref="1023" max="32767" attributes="0"/>
+              <Component id="panel_principal" pref="1325" max="32767" attributes="0"/>
               <Component id="sp_inferior" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
@@ -52,7 +52,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="panel_principal" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="sp_inferior" pref="558" max="32767" attributes="0"/>
+                  <Component id="sp_inferior" pref="673" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -80,7 +80,7 @@
                       <Component id="bt_materias" min="-2" pref="97" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="bt_alumnos" min="-2" pref="97" max="-2" attributes="0"/>
-                      <EmptySpace pref="496" max="32767" attributes="0"/>
+                      <EmptySpace pref="798" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

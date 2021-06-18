@@ -1,10 +1,12 @@
 
 package com.uni.dao;
 import com.uni.dao.Conexion;
+import com.uni.model.Alumno;
+import com.uni.model.Cursado;
+import com.uni.model.Inscripcion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import com.uni.model.Profesor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,36 +17,37 @@ import java.time.format.DateTimeFormatter;
  *
  * @author diego
  */
-public class DaoProfesor extends Conexion{
-    private static String QUERY_SELECT_PROFESORES = "CALL `GET_PROFESORES`()";
-    private static String QUERY_UPDATE_PROFESOR = "CALL `UPDATE_PROFESOR`(?,?,?,?,?,?)";
-    private static String QUERY_CREATE_PROFESOR = "CALL `CREATE_PROFESOR`(?,?,?,?,?,?)";
-    private static String QUERY_DELETE_PROFESOR = "CALL `CLEAR_PROFESOR`(?)";
+public class DaoAlumno extends Conexion{
+    private static String QUERY_SELECT_ALUMNOS = "CALL `GET_ALUMNOS`()";
+    private static String QUERY_UPDATE_ALUMNO = "CALL `UPDATE_ALUMNO`(?,?,?,?,?,?)";
+    private static String QUERY_CREATE_ALUMNO = "CALL `CREATE_ALUMNO`(?,?,?,?,?,?)";
+    private static String QUERY_DELETE_ALUMNO = "CALL `CLEAR_ALUMNO`(?)";
     //Consultas de filtrado
-    private static String QUERY_FIL_SELECT_PROFESOR = "CALL `GET_PROFESOR`(?)";
+    private static String QUERY_FIL_SELECT_ALUMNO = "CALL `GET_ALUMNO`(?)";
     
-    public static List<Profesor> read(){
+    public static List<Alumno> read(){
         Connection conn = null;
         PreparedStatement pe = null;
         ResultSet rs = null;
-        List<Profesor> listaProfesores = new ArrayList<Profesor>();
+        List<Alumno> listaAlumnos = new ArrayList<Alumno>();
         
         try{
             conn = getConnection();
-            pe = conn.prepareStatement(QUERY_SELECT_PROFESORES);
+            pe = conn.prepareStatement(QUERY_SELECT_ALUMNOS);
             rs = pe.executeQuery();// realizamos ua consuta del tipo select, esperando la respuesta de tipo ResultSet
             
             while(rs.next()){
-                Profesor p = new Profesor();
-                p.setDni(rs.getInt(1));
-                p.setNombre(rs.getString(2));
-                p.setApellido(rs.getString(3));
-                System.out.println(rs.getString(4));
+                Alumno alumno = new Alumno();
+                alumno.setDni(rs.getInt(1));
+                alumno.setNombre(rs.getString(2));
+                alumno.setApellido(rs.getString(3));
                 String[] fecha = rs.getString(4).split("-");
-                p.setFechaNacimiento(LocalDate.of(Integer.valueOf(fecha[0]), Integer.valueOf(fecha[1]), Integer.valueOf(fecha[2])));
-                p.setDomicilio(rs.getString(5));
-                p.setTelefono(rs.getString(6));
-                listaProfesores.add(p);
+                alumno.setFechaNacimiento(LocalDate.of(Integer.valueOf(fecha[0]), Integer.valueOf(fecha[1]), Integer.valueOf(fecha[2])));
+                alumno.setDomicilio(rs.getString(5));
+                alumno.setTelefono(rs.getString(6));
+                alumno.setInscripcion(Inscripcion.seleccionarInscripcion(rs.getInt(7)));
+                alumno.setCursados(Cursado.seleccionarCursados(alumno.getDni()));
+                listaAlumnos.add(alumno);
             }
             
         }catch(SQLException e){
@@ -58,24 +61,24 @@ public class DaoProfesor extends Conexion{
             close(rs);
         }
         
-        return listaProfesores;
+        return listaAlumnos;
     }
     
     
     
-    public static void update(Profesor profesor){
+    public static void update(Alumno alumno){
         Connection conn = null;
         PreparedStatement pe = null;
         try{
             
             conn = getConnection();
-            pe = conn.prepareStatement(QUERY_UPDATE_PROFESOR);
-            pe.setString(1, profesor.getNombre());
-            pe.setString(2, profesor.getApellido());
-            pe.setString(3, profesor.getFechaNacimiento().format(DateTimeFormatter.ISO_DATE));
-            pe.setString(4, profesor.getDomicilio());
-            pe.setString(5, profesor.getTelefono());
-            pe.setInt(6, profesor.getDni());
+            pe = conn.prepareStatement(QUERY_UPDATE_ALUMNO);
+            pe.setString(1, alumno.getNombre());
+            pe.setString(2, alumno.getApellido());
+            pe.setString(3, alumno.getFechaNacimiento().format(DateTimeFormatter.ISO_DATE));
+            pe.setString(4, alumno.getDomicilio());
+            pe.setString(5, alumno.getTelefono());
+            pe.setInt(6, alumno.getDni());
             
             pe.executeUpdate();//realizamos la peticion tipo update
             System.out.println("Update realizado con exito");
@@ -97,7 +100,7 @@ public class DaoProfesor extends Conexion{
         PreparedStatement pe = null;
         try{
             conn = getConnection();
-            pe = conn.prepareStatement(QUERY_DELETE_PROFESOR);
+            pe = conn.prepareStatement(QUERY_DELETE_ALUMNO);
             pe.setInt(1, dni);
             
             pe.executeUpdate();//realizamos la peticion tipo delete
@@ -115,19 +118,20 @@ public class DaoProfesor extends Conexion{
 
     
     //---------------------------------------------------------------EDITAR
-    public static void agregar(Profesor profesor){
+    public static void agregar(Alumno alumno){
         
         Connection conn = null;
         PreparedStatement pe = null;
         try{
             conn = getConnection();
-            pe = conn.prepareStatement(QUERY_CREATE_PROFESOR);
-            pe.setString(1, profesor.getNombre());
-            pe.setString(2, profesor.getApellido());
-            pe.setString(3, profesor.getFechaNacimiento().format(DateTimeFormatter.ISO_DATE));
-            pe.setString(4, profesor.getDomicilio());
-            pe.setString(5, profesor.getTelefono());
-            pe.setInt(6, profesor.getDni());
+            pe = conn.prepareStatement(QUERY_CREATE_ALUMNO);
+            pe.setString(1, alumno.getNombre());
+            pe.setString(2, alumno.getApellido());
+            pe.setString(3, alumno.getFechaNacimiento().format(DateTimeFormatter.ISO_DATE));
+            pe.setString(4, alumno.getDomicilio());
+            pe.setString(5, alumno.getTelefono());
+            pe.setInt(6, alumno.getDni());
+            pe.setInt(7, alumno.getInscripcion().getCodigo());
             
             pe.executeUpdate();//realizamos la peticion tipo create
         }catch(SQLException e){
@@ -142,28 +146,29 @@ public class DaoProfesor extends Conexion{
         }
     }
     
-    public static Profesor select(int dni){
+    public static Alumno select(int dni){
         Connection conn = null;
         PreparedStatement pe = null;
         ResultSet rs = null;
-        Profesor p = null;
+        Alumno alumno = null;
         if(dni != 0)
         try{
             conn = getConnection();
-            pe = conn.prepareStatement(QUERY_FIL_SELECT_PROFESOR);
+            pe = conn.prepareStatement(QUERY_FIL_SELECT_ALUMNO);
             pe.setInt(1, dni);
             rs = pe.executeQuery();// realizamos una consuta del tipo select, esperando la respuesta de tipo ResultSet
             rs.next();
-            p = new Profesor();
-            p.setDni(rs.getInt(1));
-            p.setNombre(rs.getString(2));
-            p.setApellido(rs.getString(3));
-            System.out.println(rs.getString(4));
+            alumno = new Alumno();
+            alumno.setDni(rs.getInt(1));
+            alumno.setNombre(rs.getString(2));
+            alumno.setApellido(rs.getString(3));
             String[] fecha = rs.getString(4).split("-");
-            p.setFechaNacimiento(LocalDate.of(Integer.valueOf(fecha[0]), Integer.valueOf(fecha[1]), Integer.valueOf(fecha[2])));
-            p.setDomicilio(rs.getString(5));
-            p.setTelefono(rs.getString(6));
+            alumno.setFechaNacimiento(LocalDate.of(Integer.valueOf(fecha[0]), Integer.valueOf(fecha[1]), Integer.valueOf(fecha[2])));
+            alumno.setDomicilio(rs.getString(5));
+            alumno.setTelefono(rs.getString(6));
             
+            alumno.setInscripcion(DaoInscripcion.select(rs.getInt(7)));
+            alumno.setCursados(DaoCursado.readFilAlumno(alumno.getDni()));
         }catch(SQLException e){
             System.out.println("Error al obtener Profesor: " + e);
         }catch(Exception e){
@@ -175,6 +180,6 @@ public class DaoProfesor extends Conexion{
             close(rs);
         }
         
-        return p;
+        return alumno;
     }
 }

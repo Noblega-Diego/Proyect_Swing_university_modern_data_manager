@@ -61,8 +61,11 @@ public class ControladorEdicionProfesor implements ActionListener{
         view.getLb_nombre().setText(profesor.getNombre() +" "+ profesor.getApellido());
         view.getTxt_nombre().setText(profesor.getNombre());
         view.getTxt_apellido().setText(profesor.getApellido());
-        LocalDate fecha = profesor.getFedchaNacimiento();
-        view.getDc_FechaNacimiento().setDate(new Date(fecha.getYear() - 1900, fecha.getMonth().getValue() -1, fecha.getDayOfMonth()));
+        LocalDate fecha = profesor.getFechaNacimiento();
+        view.getDc_FechaNacimiento().setDate(new Date(
+                fecha.getYear() - 1900, 
+                fecha.getMonth().getValue() -1, 
+                fecha.getDayOfMonth()));
         view.getTxt_domicilio().setText(profesor.getDomicilio());
         view.getTxt_telefono().setText(profesor.getTelefono());
         
@@ -140,7 +143,7 @@ public class ControladorEdicionProfesor implements ActionListener{
             profesor.setNombre(view.getTxt_nombre().getText());
             profesor.setApellido(view.getTxt_apellido().getText());
             Calendar fecha = view.getDc_FechaNacimiento().getCalendar();
-            profesor.setFedchaNacimiento(LocalDate.of(
+            profesor.setFechaNacimiento(LocalDate.of(
                     fecha.get(Calendar.YEAR),  //Año
                     fecha.get(Calendar.MONTH)+1,  //Mes
                     fecha.get(Calendar.DAY_OF_MONTH)));//dia

@@ -153,7 +153,7 @@ public class ControladorEspacioProfesor implements ActionListener, MouseListener
                 fila[0] = new Integer(listaCarreras.get(i).getDni());
                 fila[1] = listaCarreras.get(i).getNombre();
                 fila[2] = listaCarreras.get(i).getApellido();
-                fila[3] = listaCarreras.get(i).getFedchaNacimiento().format(DateTimeFormatter.ISO_LOCAL_DATE);
+                fila[3] = listaCarreras.get(i).getFechaNacimiento().format(DateTimeFormatter.ISO_LOCAL_DATE);
                 fila[4] = listaCarreras.get(i).getDomicilio();
                 fila[5] = listaCarreras.get(i).getTelefono();
                 modeloTabla.addRow(fila);

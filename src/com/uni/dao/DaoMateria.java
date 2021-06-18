@@ -180,4 +180,41 @@ public class DaoMateria extends Conexion{
         
         return listaMaterias;
     }
+    
+    
+    public static Materia select(int codigo){
+        Connection conn = null;
+        PreparedStatement pe = null;
+        ResultSet rs = null;
+        Materia materia = null;
+        try{
+            conn = getConnection();
+            pe = conn.prepareStatement(QUERY_FIL_SELECT_MATERIA);
+            pe.setInt(1, codigo);
+            rs = pe.executeQuery();// realizamos ua consuta del tipo select, esperando la respuesta de tipo ResultSet
+            materia = new Materia();
+            rs.next();
+            materia.setCodigo(rs.getInt(1));
+            materia.setNombre(rs.getString(2));
+            if(rs.getInt(3)!= 0);{
+                Profesor profesor = DaoProfesor.select(rs.getInt(3));
+                materia.setProfesor(profesor);
+            }
+            
+        }catch(SQLException e){
+            System.out.println("Error al obtener: " + e);
+        }catch(Exception e){
+            System.err.println("Error desconocido: " + e);
+        }
+        finally{
+            //finalizamos la conexion
+            close(conn);
+            close(rs);
+        }
+        
+        
+        
+        return materia;
+    }
+    
 }

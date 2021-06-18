@@ -1,6 +1,8 @@
 
 package com.uni.model;
 
+import com.uni.dao.DaoAlumno;
+import com.uni.dao.DaoInscripcion;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
@@ -17,9 +19,23 @@ public class Alumno {
     private LocalDate fechaNacimiento;
     private String domicilio;
     private String telefono;
-    private int codigoInscripcion;
+    private Inscripcion inscripcion;
     private List<Cursado> cursados = new ArrayList<Cursado>();
 
+    public Alumno() {
+    }
+    
+    public Alumno(int dni, String nombre, String apellido, LocalDate fechaNacimiento, String domicilio, String telefono, Inscripcion inscripcion) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.fechaNacimiento = fechaNacimiento;
+        this.domicilio = domicilio;
+        this.telefono = telefono;
+        this.inscripcion = inscripcion;
+    }
+    
+    
     public int getDni() {
         return dni;
     }
@@ -68,13 +84,14 @@ public class Alumno {
         this.telefono = telefono;
     }
 
-    public int getCodigoInscripcion() {
-        return codigoInscripcion;
+    public Inscripcion getInscripcion() {
+        return inscripcion;
     }
 
-    public void setCodigoInscripcion(int codigoInscripcion) {
-        this.codigoInscripcion = codigoInscripcion;
+    public void setInscripcion(Inscripcion inscripcion) {
+        this.inscripcion = inscripcion;
     }
+    
 
     public List<Cursado> getCursados() {
         return cursados;
@@ -84,5 +101,26 @@ public class Alumno {
         this.cursados = cursados;
     }
     
+    
+    public static List<Alumno> listarAlumnos(){
+        return DaoAlumno.read();
+    }
+    
+    public static void updateAlumno(Alumno alumno){
+        DaoAlumno.update(alumno);
+    }
+    
+    public static void createAlumno(Alumno alumno){
+        DaoAlumno.agregar(alumno);
+    }
+    
+    public static void delateAlumno(int dni){
+        DaoAlumno.delete(dni);
+    }
+
+    //CRUD FIND
+    public static Alumno seleccionarAlumno(int dni){
+        return DaoAlumno.select(dni);
+    }
     
 }

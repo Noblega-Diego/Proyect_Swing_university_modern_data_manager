@@ -1,7 +1,9 @@
 
 package com.uni.model;
 
+import com.uni.dao.DaoInscripcion;
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  *
@@ -12,8 +14,8 @@ public class Inscripcion {
     private String nombre;
     private LocalDate fechaInscripcion;
     private Carrera carrera;
-    private Alumno alumno;
-
+    private List<Alumno> alumnos;
+    
     public int getCodigo() {
         return codigo;
     }
@@ -46,12 +48,34 @@ public class Inscripcion {
         this.carrera = carrera;
     }
 
-    public Alumno getAlumno() {
-        return alumno;
+    public List<Alumno> getAlumnos() {
+        return alumnos;
     }
 
-    public void setAlumno(Alumno alumno) {
-        this.alumno = alumno;
+    public void setAlumnos(List<Alumno> alumnos) {
+        this.alumnos = alumnos;
+    }
+
+    
+    public static List<Inscripcion> listarInscripcion(){
+        return DaoInscripcion.read();
+    }
+    
+    public static void updateInscipcion(Inscripcion inscripcion){
+        DaoInscripcion.update(inscripcion);
+    }
+    
+    public static void createInscripcion(Inscripcion inscripcion){
+        DaoInscripcion.agregar(inscripcion);
+    }
+    
+    public static void delateInscripcion(int codigo){
+        DaoInscripcion.delete(codigo);
+    }
+
+    //CRUD FIND
+    public static Inscripcion seleccionarInscripcion(int codigo){
+        return DaoInscripcion.select(codigo);
     }
     
     

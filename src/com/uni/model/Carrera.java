@@ -10,7 +10,8 @@ public class Carrera {
     private int codigo;
     private String nombre;
     private String duracion;
-
+    private List<Inscripcion> inscripciones;
+    
     public Carrera() {
     }
     
@@ -43,26 +44,38 @@ public class Carrera {
     public void setDuracion(String duracion) {
         this.duracion = duracion;
     }
-    
+
+    public List<Inscripcion> getInscripciones() {
+        return inscripciones;
+    }
+
+    public void setInscripciones(List<Inscripcion> inscripciones) {
+        this.inscripciones = inscripciones;
+    }
     
     
     
     //CRUD
     
-    public List<Carrera> listarCarreras(){
+    public static List<Carrera> listarCarreras(){
         return DaoCarrera.read();
     }
     
-    public void updateCarrera(Carrera carrera){
+    public static void updateCarrera(Carrera carrera){
         DaoCarrera.update(carrera);
     }
     
-    public void createCarrera(Carrera carrera){
+    public static void createCarrera(Carrera carrera){
         DaoCarrera.agregar(carrera);
     }
     
-    public void delateCarrera(int codigo){
+    public static void delateCarrera(int codigo){
         DaoCarrera.delete(codigo);
+    }
+    
+    //Filter
+    public static Carrera selecionarCarrera(int codigo){
+        return DaoCarrera.select(codigo);
     }
     
 }

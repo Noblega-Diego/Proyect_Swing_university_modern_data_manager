@@ -45,7 +45,7 @@ public class ControladorEliminacionProfesor implements ActionListener{
         view.getLb_dni().setText(String.valueOf(profesor.getDni()));
         view.getLb_nombre().setText(profesor.getNombre() +" "+ profesor.getApellido());
         view.getLb_apellido().setText(profesor.getApellido());
-        LocalDate fecha = profesor.getFedchaNacimiento();
+        LocalDate fecha = profesor.getFechaNacimiento();
         view.getLb_fechaNacimiento().setText(
                 String.valueOf(fecha.getYear())+ " / " +
                 String.valueOf(fecha.getMonth().getValue() -1) +" / "+

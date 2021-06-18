@@ -47,7 +47,7 @@ public class ControladorAgregarProfesor implements ActionListener{
         profesor.setNombre(view.getTxt_nombre().getText());
         profesor.setApellido(view.getTxt_apellido().getText());
         Calendar fecha = view.getDc_FechaNacimiento().getCalendar();
-        profesor.setFedchaNacimiento(LocalDate.of(
+        profesor.setFechaNacimiento(LocalDate.of(
                 fecha.get(Calendar.YEAR),  //Año
                 fecha.get(Calendar.MONTH)+1,  //Mes
                 fecha.get(Calendar.DAY_OF_MONTH)));//dia

@@ -3,6 +3,7 @@ package com.uni.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import com.uni.view.MenuPrincipal;
+import com.uni.view.PanelAlumno;
 import com.uni.view.PanelCarrera;
 import com.uni.view.PanelMateria;
 import com.uni.view.PanelProfesor;
@@ -20,6 +21,7 @@ public class ControladorMenuPrincipal implements ActionListener{
     private ControladorEspacioCarrera controlCarrera;
     private ControladorEspacioProfesor controlProfesor;
     private ControladorEspacioMateria controlMateria;
+    private ControladorEspacioAlumno controlAlumno;
     
     
     public ControladorMenuPrincipal(MenuPrincipal view){
@@ -32,6 +34,7 @@ public class ControladorMenuPrincipal implements ActionListener{
         this.view.getBt_carrera().addActionListener(this);
         this.view.getBt_profesores().addActionListener(this);
         this.view.getBt_materias().addActionListener(this);
+        this.view.getBt_alumnos().addActionListener(this);
     }
 
     @Override
@@ -42,6 +45,8 @@ public class ControladorMenuPrincipal implements ActionListener{
             mostrarProfesores();
         }else if(e.getSource().equals(this.view.getBt_materias())){
             mostrarMaterias();
+        }else if(e.getSource().equals(this.view.getBt_alumnos())){
+            mostrarAlumnos();
         }
     }
     
@@ -53,6 +58,7 @@ public class ControladorMenuPrincipal implements ActionListener{
         view.getBt_carrera().setSelected( view.getBt_carrera().equals(button) );
         view.getBt_profesores().setSelected( view.getBt_profesores().equals(button) );
         view.getBt_materias().setSelected( view.getBt_materias().equals(button) );
+        view.getBt_alumnos().setSelected( view.getBt_alumnos().equals(button) );
     }
     
     private void mostrarCarrera(){
@@ -79,4 +85,12 @@ public class ControladorMenuPrincipal implements ActionListener{
         this.controlMateria.cargarPlanilla();
     }
 
+    private void mostrarAlumnos() {
+        seleccionarButton( this.view.getBt_alumnos());
+        PanelAlumno panelAlumno = new PanelAlumno();
+        this.controlAlumno = new ControladorEspacioAlumno(panelAlumno);
+        cambiarPanelInferior(panelAlumno);
+        this.controlAlumno.cargarPlanilla();
+    }
+    
 }

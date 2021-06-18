@@ -14,7 +14,7 @@ public class Profesor {
     private int dni;
     private String nombre;
     private String apellido;
-    private LocalDate fedchaNacimiento;
+    private LocalDate fechaNacimiento;
     private String domicilio;
     private String telefono;
     private List<Materia> materias= new ArrayList<Materia>();
@@ -26,7 +26,7 @@ public class Profesor {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.fedchaNacimiento = fedchaNacimiento;
+        this.fechaNacimiento = fedchaNacimiento;
         this.domicilio = domicilio;
         this.telefono = telefono;
     }
@@ -55,12 +55,12 @@ public class Profesor {
         this.apellido = apellido;
     }
 
-    public LocalDate getFedchaNacimiento() {
-        return fedchaNacimiento;
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFedchaNacimiento(LocalDate fedchaNacimiento) {
-        this.fedchaNacimiento = fedchaNacimiento;
+    public void setFechaNacimiento(LocalDate fedchaNacimiento) {
+        this.fechaNacimiento = fedchaNacimiento;
     }
 
     public String getDomicilio() {

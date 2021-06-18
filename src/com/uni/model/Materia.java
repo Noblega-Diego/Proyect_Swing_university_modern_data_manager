@@ -1,7 +1,6 @@
 
 package com.uni.model;
 import com.uni.dao.DaoMateria;
-import com.uni.dao.DaoProfesor;
 import java.util.List;
 import java.util.ArrayList;
 /**

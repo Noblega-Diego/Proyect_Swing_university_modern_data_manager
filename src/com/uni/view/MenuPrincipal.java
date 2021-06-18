@@ -81,7 +81,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 .addComponent(bt_materias, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bt_alumnos, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(496, Short.MAX_VALUE))
+                .addContainerGap(798, Short.MAX_VALUE))
         );
         panel_principalLayout.setVerticalGroup(
             panel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,7 +99,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         panel_superior.setLayout(panel_superiorLayout);
         panel_superiorLayout.setHorizontalGroup(
             panel_superiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 1023, Short.MAX_VALUE)
+            .addComponent(panel_principal, javax.swing.GroupLayout.DEFAULT_SIZE, 1325, Short.MAX_VALUE)
             .addComponent(sp_inferior)
         );
         panel_superiorLayout.setVerticalGroup(
@@ -107,7 +107,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             .addGroup(panel_superiorLayout.createSequentialGroup()
                 .addComponent(panel_principal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(sp_inferior, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE))
+                .addComponent(sp_inferior, javax.swing.GroupLayout.DEFAULT_SIZE, 673, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
