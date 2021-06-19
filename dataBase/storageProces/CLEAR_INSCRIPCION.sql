@@ -1,0 +1,10 @@
+DELIMITER $$
+
+USE `sgauni512`$$
+
+DROP PROCEDURE IF EXISTS `CLEAR_INSCRIPCION`$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CLEAR_INSCRIPCION`(IN codigo INT(11))
+DELETE FROM `inscripcion` WHERE `insc_cod`=codigo$$
+
+DELIMITER ;

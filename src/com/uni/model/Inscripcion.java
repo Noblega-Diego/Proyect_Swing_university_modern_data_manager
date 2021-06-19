@@ -69,7 +69,7 @@ public class Inscripcion {
         DaoInscripcion.agregar(inscripcion);
     }
     
-    public static void delateInscripcion(int codigo){
+    public static void deleteInscripcion(int codigo){
         DaoInscripcion.delete(codigo);
     }
 

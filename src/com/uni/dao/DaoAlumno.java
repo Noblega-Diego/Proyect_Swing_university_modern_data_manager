@@ -20,7 +20,7 @@ import java.time.format.DateTimeFormatter;
 public class DaoAlumno extends Conexion{
     private static String QUERY_SELECT_ALUMNOS = "CALL `GET_ALUMNOS`()";
     private static String QUERY_UPDATE_ALUMNO = "CALL `UPDATE_ALUMNO`(?,?,?,?,?,?)";
-    private static String QUERY_CREATE_ALUMNO = "CALL `CREATE_ALUMNO`(?,?,?,?,?,?)";
+    private static String QUERY_CREATE_ALUMNO = "CALL `CREATE_ALUMNO`(?,?,?,?,?,?,?)";
     private static String QUERY_DELETE_ALUMNO = "CALL `CLEAR_ALUMNO`(?)";
     //Consultas de filtrado
     private static String QUERY_FIL_SELECT_ALUMNO = "CALL `GET_ALUMNO`(?)";
@@ -100,7 +100,7 @@ public class DaoAlumno extends Conexion{
         PreparedStatement pe = null;
         try{
             conn = getConnection();
-            pe = conn.prepareStatement(QUERY_DELETE_ALUMNO);
+            pe = conn.prepareStatement(QUERY_DELETE_ALUMNO);           
             pe.setInt(1, dni);
             
             pe.executeUpdate();//realizamos la peticion tipo delete
@@ -135,7 +135,7 @@ public class DaoAlumno extends Conexion{
             
             pe.executeUpdate();//realizamos la peticion tipo create
         }catch(SQLException e){
-            System.out.println("Error al eliminar " + e);
+            System.out.println("Error al crear Alumno " + e);
         }catch(Exception e){
             System.err.println("Error desconocido: " + e);
         }
@@ -170,7 +170,7 @@ public class DaoAlumno extends Conexion{
             alumno.setInscripcion(DaoInscripcion.select(rs.getInt(7)));
             alumno.setCursados(DaoCursado.readFilAlumno(alumno.getDni()));
         }catch(SQLException e){
-            System.out.println("Error al obtener Profesor: " + e);
+            System.out.println("Error al obtener: " + e);
         }catch(Exception e){
             System.err.println("Error desconocido: " + e);
         }

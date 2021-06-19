@@ -1,0 +1,10 @@
+DELIMITER $$
+
+USE `sgauni512`$$
+
+DROP PROCEDURE IF EXISTS `CLEAR_CURSADO`$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CLEAR_CURSADO`(codigo INT(11))
+DELETE FROM `cursado` WHERE `cur_alu_dni`=codigo$$
+
+DELIMITER ;

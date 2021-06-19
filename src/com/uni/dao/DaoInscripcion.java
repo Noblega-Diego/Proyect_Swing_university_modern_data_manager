@@ -11,14 +11,15 @@ import java.util.List;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 /**
  *
  * @author diego
  */
 public class DaoInscripcion extends Conexion{
     private static String QUERY_SELECT_INSCRIPCIONES = "CALL `GET_INSCRIPCIONES`()";
-    private static String QUERY_UPDATE_INSCRIPCION = "CALL `UPDATE_INSCRIPCION`(?,?,?,?,?,?)";
-    private static String QUERY_CREATE_INSCRIPCION = "CALL `CREATE_INSCRIPCION`(?,?,?,?,?)";
+    private static String QUERY_UPDATE_INSCRIPCION = "CALL `UPDATE_INSCRIPCION`(?,?,?,?)";
+    private static String QUERY_CREATE_INSCRIPCION = "CALL `CREATE_INSCRIPCION`(?,?,?,?)";
     private static String QUERY_DELETE_INSCRIPCION = "CALL `CLEAR_INSCRIPCION`(?)";
     //Consultas de filtrado
     private static String QUERY_SELECT_INSCRIPCION = "CALL `GET_INSCRIPCION`(?)";
@@ -89,14 +90,14 @@ public class DaoInscripcion extends Conexion{
 //        }
     }
     
-    public static void delete(int dni){
+    public static void delete(int codigo){
         
         Connection conn = null;
         PreparedStatement pe = null;
         try{
             conn = getConnection();
             pe = conn.prepareStatement(QUERY_DELETE_INSCRIPCION);
-            pe.setInt(1, dni);
+            pe.setInt(1, codigo);
             
             pe.executeUpdate();//realizamos la peticion tipo delete
         }catch(SQLException e){
@@ -114,30 +115,29 @@ public class DaoInscripcion extends Conexion{
     
     //---------------------------------------------------------------EDITAR
     public static void agregar(Inscripcion inscripcion){
-//        
-//        Connection conn = null;
-//        PreparedStatement pe = null;
-//        try{
-//            conn = getConnection();
-//            pe = conn.prepareStatement(QUERY_CREATE_INSCRIPCION);
-//            pe.setString(1, inscripcion.getNombre());
-//            pe.setString(2, inscripcion.getApellido());
-//            pe.setString(3, inscripcion.getFechaNacimiento().format(DateTimeFormatter.ISO_DATE));
-//            pe.setString(4, inscripcion.getDomicilio());
-//            pe.setString(5, inscripcion.getTelefono());
-//            pe.setInt(6, inscripcion.getDni());
-//            
-//            pe.executeUpdate();//realizamos la peticion tipo create
-//        }catch(SQLException e){
-//            System.out.println("Error al eliminar " + e);
-//        }catch(Exception e){
-//            System.err.println("Error desconocido: " + e);
-//        }
-//        finally{
-//            //finalizamos la conexion
-//            close(conn);
-//            close(pe);
-//        }
+        
+        Connection conn = null;
+        PreparedStatement pe = null;
+        try{
+            conn = getConnection();
+            pe = conn.prepareStatement(QUERY_CREATE_INSCRIPCION);
+            pe.setString(1, inscripcion.getNombre());
+            pe.setString(2, inscripcion.getFechaInscripcion().format(DateTimeFormatter.ISO_DATE));
+            pe.setInt(3, inscripcion.getCarrera().getCodigo());
+            pe.setInt(4, inscripcion.getCodigo());
+            
+            
+            pe.executeUpdate();//realizamos la peticion tipo create
+        }catch(SQLException e){
+            System.out.println("Error al registrar " + e);
+        }catch(Exception e){
+            System.err.println("Error desconocido: " + e);
+        }
+        finally{
+            //finalizamos la conexion
+            close(conn);
+            close(pe);
+        }
     }
     
     public static Inscripcion select(int codigo){

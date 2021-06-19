@@ -7,7 +7,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import com.uni.view.submenus.alumno.PanelAlumnoVisualizar;
 import com.uni.view.submenus.alumno.PanelAlumnoEdicion;
-import com.uni.view.submenus.profesor.PanelProfesorEdicion;
+import com.uni.view.submenus.alumno.PanelAlumnoEliminacion;
+import com.uni.view.submenus.alumno.PanelAlumnoAgregacion;
 import java.awt.event.MouseEvent;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -27,8 +28,8 @@ public class ControladorEspacioAlumno implements ActionListener, MouseListener{
     
     //Controladores
     private ControladorEdicionAlumno EdicionAlumno;
-//    private ControladorAgregarAlumno AgregarAlumno;
-//    private ControladorEliminacionAlumno EliminacionAlumno;
+    private ControladorAgregarAlumno AgregarAlumno;
+    private ControladorEliminacionAlumno EliminacionAlumno;
     private ControladorVisualizarAlumno VisualizarAlumno;
     
     public ControladorEspacioAlumno(PanelAlumno panelAlumno){
@@ -52,9 +53,9 @@ public class ControladorEspacioAlumno implements ActionListener, MouseListener{
         }else if(e.getSource().equals( this.panelAlumno.getBt_edit())){
             editar();
         }else if(e.getSource().equals( this.panelAlumno.getBt_agregar())){
-//            agregar();
+            agregar();
         }else if(e.getSource().equals( this.panelAlumno.getBt_eliminar())){
-//            eliminar();
+            eliminar();
         }
     }
     
@@ -67,14 +68,12 @@ public class ControladorEspacioAlumno implements ActionListener, MouseListener{
             i = this.panelAlumno.getTable_alumno().rowAtPoint(e.getPoint());
             Alumno alumno = Alumno.seleccionarAlumno((Integer)this.panelAlumno.getTable_alumno().getValueAt(i, 0));
             if(VisualizarAlumno != null){
-                VisualizarAlumno.ingresarAlumnoAEditar(alumno);
+                VisualizarAlumno.ingresarAlumnoAVisualizar(alumno);
             }else if(EdicionAlumno != null){
                 EdicionAlumno.ingresarAlumnoAEditar(alumno);
+            }else if(EliminacionAlumno != null){
+                EliminacionAlumno.ingresarAlumnoAEliminar(alumno);
             }
-//            else if(EliminacionAlumno != null)
-//                EliminacionAlumno.ingresarProfesorAEditar(profesor);
-//            }else if(EliminacionAlumno != null)
-//                EliminacionAlumno.ingresarProfesorAEditar(profesor);
         } 
     }
             
@@ -84,7 +83,7 @@ public class ControladorEspacioAlumno implements ActionListener, MouseListener{
     
     public void lista(){
 //        this.AgregarProfesor = null;
-//        this.EliminacionAlumno = null
+        this.EliminacionAlumno = null;
         this.EdicionAlumno = null;
 
         if(this.VisualizarAlumno == null){
@@ -98,8 +97,8 @@ public class ControladorEspacioAlumno implements ActionListener, MouseListener{
 
     public void editar(){
         this.VisualizarAlumno = null;
-//        this.AgregarProfesor = null;
-//        this.EliminacionProfesor = null;
+        this.EliminacionAlumno = null;
+        this.AgregarAlumno = null;
         
         if(this.EdicionAlumno == null){
             System.gc();
@@ -110,26 +109,30 @@ public class ControladorEspacioAlumno implements ActionListener, MouseListener{
     }
     
     public void agregar(){
-//        this.EdicionProfesor = null;
-//        this.EliminacionProfesor = null;
-//        if(this.AgregarProfesor == null){
-//            System.gc();
-//            PanelProfesorAgregacion panelAgregacion = new PanelProfesorAgregacion();
-//            this.AgregarProfesor = new ControladorAgregarProfesor(this, panelAgregacion);
-//            cambiarSubPanel(panelAgregacion);
-//        }
+        this.VisualizarAlumno = null;
+        this.EliminacionAlumno = null;
+        this.EdicionAlumno = null;
+        
+        if(this.AgregarAlumno == null){
+            System.gc();
+            PanelAlumnoAgregacion panelAgregacion = new PanelAlumnoAgregacion();
+            this.AgregarAlumno = new ControladorAgregarAlumno(this, panelAgregacion);
+            cambiarSubPanel(panelAgregacion);
+            this.AgregarAlumno.cargarCarreras();
+        }
     }
     
     public void eliminar(){
-//        this.EdicionProfesor = null;
-//        this.AgregarProfesor = null;
-//        
-//        if (this.EliminacionProfesor == null){
-//            System.gc();
-//            PanelProfesorEliminacion panelElimiacion = new PanelProfesorEliminacion();
-//            this.EliminacionProfesor = new ControladorEliminacionProfesor(this, panelElimiacion);
-//            cambiarSubPanel(panelElimiacion);
-//        }
+        this.EdicionAlumno = null;
+        this.VisualizarAlumno = null;
+        this.AgregarAlumno = null;
+        
+        if (this.EliminacionAlumno == null){
+            System.gc();
+            PanelAlumnoEliminacion panelElimiacion = new PanelAlumnoEliminacion();
+            this.EliminacionAlumno = new ControladorEliminacionAlumno(this, panelElimiacion);
+            cambiarSubPanel(panelElimiacion);
+        }
     }
     
     private void seleccionarButton(JButton button){

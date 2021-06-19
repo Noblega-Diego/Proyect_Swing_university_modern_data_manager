@@ -22,6 +22,7 @@ public class DaoCursado extends Conexion{
     private static String QUERY_DELETE_CURSADO = "CALL `CLEAR_CURSADO`(?)";
     //Consultas de filtrado
     private static String QUERY_FIL_SELECT_CURSADO_WHERE_ALUMNO = "CALL `GET_CURSADO_ALUMNO`(?)";
+    private static String QUERY_FIL_CLEAR_CURSADO_WHERE_ALUMNO = "CALL `CLEAR_CURSADO_ALUMNO`(?)";
             
     public static List<Materia> read(){
         Connection conn = null;
@@ -122,7 +123,7 @@ public class DaoCursado extends Conexion{
             pe.setInt(3, cursado.getNota());
             pe.executeUpdate();//realizamos la peticion tipo create
         }catch(SQLException e){
-            System.out.println("Error al eliminar " + e);
+            System.out.println("Error al agregarCursado " + e);
         }catch(Exception e){
             System.err.println("Error desconocido: " + e);
         }
@@ -166,5 +167,26 @@ public class DaoCursado extends Conexion{
         
         
         return listaCursado;
+    }
+
+    public static void deleteCursadoAlumno(int dni) {
+        Connection conn = null;
+        PreparedStatement pe = null;
+        try{
+            conn = getConnection();
+            pe = conn.prepareStatement(QUERY_FIL_CLEAR_CURSADO_WHERE_ALUMNO);
+            pe.setInt(1, dni);
+            
+            pe.executeUpdate();//realizamos la peticion tipo delete
+        }catch(SQLException e){
+            System.out.println("Error al eliminar " + e);
+        }catch(Exception e){
+            System.err.println("Error desconocido: " + e);
+        }
+        finally{
+            //finalizamos la conexion
+            close(conn);
+            close(pe);
+        }
     }
 }

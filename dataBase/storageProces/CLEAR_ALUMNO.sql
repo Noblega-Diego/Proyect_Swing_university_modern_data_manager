@@ -1,0 +1,10 @@
+DELIMITER $$
+
+USE `sgauni512`$$
+
+DROP PROCEDURE IF EXISTS `CLEAR_ALUMNO`$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `CLEAR_ALUMNO`(dni INT(11))
+DELETE FROM alumno WHERE `alu_dni`=dni$$
+
+DELIMITER ;

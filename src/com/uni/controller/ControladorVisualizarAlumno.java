@@ -45,7 +45,7 @@ public class ControladorVisualizarAlumno implements ActionListener{
             seleccionarMateria();
     }
     
-    public void ingresarAlumnoAEditar(Alumno alumno){
+    public void ingresarAlumnoAVisualizar(Alumno alumno){
         this.alumno = alumno;
         view.getTxt_AlumnoDni().setText(String.valueOf(alumno.getDni()));
         view.getTxt_AlumnoNombre().setText(alumno.getNombre());

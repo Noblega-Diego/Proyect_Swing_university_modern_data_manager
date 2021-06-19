@@ -8,6 +8,7 @@ import java.util.List;
  * @author diego
  */
 public class Cursado {
+
     private Alumno alumno;
     private Materia materia;
     private int nota;
@@ -52,6 +53,10 @@ public class Cursado {
     
     public static void delateCursado(int codigoMateria, int dni){
         DaoCursado.delete(codigoMateria, dni);
+    }
+    
+    public static void delateCursadoAlumno(int dni) {
+        DaoCursado.deleteCursadoAlumno(dni);
     }
 
     //CRUD FIND

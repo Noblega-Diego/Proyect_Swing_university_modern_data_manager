@@ -11,6 +11,7 @@ public class Main {
     public static void main(String[] args){
         MenuPrincipal menu = new MenuPrincipal();
         ControladorMenuPrincipal cPrincipal = new ControladorMenuPrincipal(menu);
+        menu.setTitle("Uny Manager");
         menu.setVisible(true);
     }
 }
