@@ -3,23 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/dao/DaoMateria.java</file>
-            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/model/Cursado.java</file>
+            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/controller/ControladorEliminacionAlumno.java</file>
+            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/view/submenus/alumno/PanelAlumnoEliminacion.java</file>
             <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/model/Alumno.java</file>
-            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/dao/DaoProfesor.java</file>
-            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/controller/ControladorVisualizarAlumno.java</file>
+            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/view/submenus/alumno/PanelAlumnoAgregacion.java</file>
             <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/dao/DaoCursado.java</file>
             <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/dao/DaoAlumno.java</file>
-            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/model/Materia.java</file>
-            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/controller/ControladorEdicionProfesor.java</file>
-            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/view/MenuPrincipal.java</file>
-            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/model/Profesor.java</file>
+            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/dao/DaoInscripcion.java</file>
             <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/controller/ControladorEspacioAlumno.java</file>
-            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/controller/ControladorMenuPrincipal.java</file>
-            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/view/submenus/materia/PanelMateriaEdicion.java</file>
-            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/controller/ControladorAgregarMateria.java</file>
             <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/model/Inscripcion.java</file>
-            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/view/submenus/alumno/PanelAlumnoVisualizar.java</file>
+            <file>file:/C:/Users/diego/Documents/Programacion/ProyectosJava/adminUniversidad/src/com/uni/controller/ControladorAgregarAlumno.java</file>
         </group>
     </open-files>
 </project-private>
